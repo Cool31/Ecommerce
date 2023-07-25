@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>User's Location & Map</title>
+</head>
+
+<body>
+<script>
+function getLocation(){
+if(window.navigator.geolocation){
+alert('navigator works on users browser');
+var watchid = navigator.geolocation.watchPosition(getupdates, failure);
+
+<!-- user changes location frequently -->
+var getupdates= function(position){
+alert("New position at" + position.coords.latitude +", "+ position.coords.longitude);
+navigator.geolocation.clearWatch(watchid);
+}else{
+alert("Browser has no support for navigation, sorry!");
+ }
+}
+
+<!-- current user location -->
+var watch1 = navigator.geolocation.getCurrentPosition(getupdates1, failure);
+
+var getupdates1= function(pos){
+alert("users current location:" + pos.coords.latitude+ ","+ pos.coords.longitude);
+}
+
+var failure= function(err){
+alert("Error("+ errorcode(err)+ ")" + err.message); 
+}
+
+var errorcode= function(err){
+switch(err.code){
+case err.PERMISSION_DENIED:
+return 'Permission_Denied';
+case err.PERMISSION_UNAVAILABLE:
+return 'permission_unavailable';
+case err.TIMEOUT:
+return 'Timedout';
+default:
+return 'Unknown error';
+  }
+ }
+</script>
+</body>
+</html>
