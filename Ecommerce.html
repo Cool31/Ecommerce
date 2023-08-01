@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<html manifest="offline.appcache">
+<head>
+<title>Ecommerce Payment Gateway Integration<<img src="" alt="">/title>
+<meta name="viewport" content="width=device-width initial-scale =1">
+<script src="https://.../ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="/.../min.js"></script>
+<script src="/.../jquery/.../"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+#myta tr, td{
+border: 10px solid yellow;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 5px;
+padding: 2px;
+border-collapse: collapse;
+font-size: 23px;
+background-color: green;
+color: white;
+text-align: left;
+column-gap:10px;
+row-gap:20px;
+}
+
+#myta tr, td, button{
+background-color: blue;
+display: inline-block;
+color:white;
+}
+
+input{
+background-color: green;
+color: white;
+width:260px;
+}
+
+/* For mobile phones: */
+
+[class*="col-"]
+{
+ width: 100%;
+ }
+
+@media only screen and (min-width: 600px)
+{
+/* For tablets: */
+.col-s-1 {
+width: 8.33%;
+}
+.col-s-2 {
+width: 16.66%;
+}
+.col-s-3 {width: 25%;}
+.col-s-4 {
+width: 33.33%;
+}
+.col-s-5 {
+width: 41.66%;
+}
+.col-s-6 {width: 50%;}
+.col-s-7 {width: 58.33%;
+}
+.col-s-8 {width: 66.66%;
+}
+.col-s-9 {width: 75%;
+}
+.col-s-10 {
+width: 83.33%;
+}
+.col-s-11 {width: 91.66%;
+}
+.col-s-12 {
+width: 100%;}
+}
+
+@media only screen and (min-width: 768px)
+{/* For desktop: */
+.col-1 {
+width: 8.33%;
+}
+.col-2 {
+width: 16.66%;
+}
+.col-3 {width: 25%;
+}
+.col-4 {
+width: 33.33%;
+}
+.col-5 {
+width: 41.66%;
+}
+.col-6 {width: 50%;
+}
+.col-7 {
+width: 58.33%;
+}
+.col-8 {width: 66.66%;
+}
+.col-9 {width: 75%;
+}
+.col-10 {
+width: 83.33%;
+}
+.col-11 {width: 91.66%;
+}
+.col-12 {width: 100%;
+}
+}
+
+#expenses{
+width:20rem;
+position:relative;
+left:10px;
+border: 20px solid red;
+display: inline-block;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 20px;
+border-collapse: collapse; 
+font-size: 1.10rem;
+background-color: green;
+color: white;
+text-align: center;
+}
+
+video{
+height:160px; width:320px; border:5px solid grey;
+background-color:red;
+}
+
+.flex-container, .flex-item1{ 
+direction:ltr;  
+display:block; 
+width: 500px;
+height: 270px;   background-color: lightgrey;
+
+}
+
+.flex-item{  
+width:400px; 
+display: inline; 
+padding:20px;  background-color: brown;
+color: white;
+font-size: 12px;
+vertical-align:bottom;
+column-count:4;
+column-gap:40px;
+}
+
+#dist{
+width: 500px;
+height: 300px;
+border: 10px solid red;
+display: inline-block;
+font-size:23px;
+overflow: scroll;
+vertical-align:bottom;
+}
+</style>
+</head>
+
+<body>
+<!--diff weblinks -->
+<a href="https:/www.github.com/coolvivel/main/onlinepricescanpay.html#onlineprices">Price List Scan Pay</a>
+<a href="https://www.github.com/coolvivel/main/diffconvertions.html#convertions">Temperature Measurements</a>
+<a href="https://www.github.com/coolvivel/main/diffmeasurements.html#diff">Speed Measurements</a><br/>
+<a href="https://www.github.com/coolvivel/main/threecurrencyconvert.html#three">Currency Converter</a><br/>
+
+<!--fwd & back links-->
+<input type="button" value="Next" onclick="forward()"/>
+<input type="button" value="Previous" onclick="backward()"/><br>
+
+<!--video-->
+<video autoplay>
+<source src="/storage/emulated/0/download/play.mp4" type="video/mp4">
+</video>
+<p style="font: 20px; background-color: blue; border: 5px solid yellow;
+width: 350px; color:white;"> GEORGIA GROCERY STORE</p>
+
+<form action="https://github.com/Cool31/Cool31/blob/2e22b6dde4fa86191265a2f946b8e751921daf75/authorize.php" method="POST" enctype="multipart/form-data">
+<fieldset>
+<legend><b>USER AUTHENTICATION</b></legend>
+USERNAME:<input type="text" name="user" required><hr>
+ENCRYPTION:<keygen name="security"><hr>
+<button type="submit" >SUBMIT</button><hr>
+</form>
+
+<button onChange= "https://www.github.com/coolvivel/main/userlocation.html">USER GEOLOCATION</button>
+<input type=
+"search"><button onClick=
+"https://www.google.com">Quick Look</button><br> 
+
+<p id = "totalsales"></p>
+
+<!--grocery store inputs with validated entry into db directory -->
+<form id="Bulk" action= "https://www.github.com/coolvivel/main/storedatas.js"
+method="POST" enctype="multipart/form-data">
+<fieldset>
+<legend><b>Purchase Bulk Order Form @Discount Rate (Fixed Value)</b></legend>
+<table id = "myta">
+<tr>
+<td>
+<b><i>Bill Date:</i></b>
+<input type="date" id="dat" name= "order[]"  value="" /></td>
+<td><b><i>Full Name:</i></b><input id="fname" name = "order[]"  value=" " /></td>
+<td><b><i>Mobile:</i></b><input id="number" name = "order[]"  value=" " /></td>
+<td><b><i>Shipping address:</i></b><input type="text" id="ship" name = "order[]"  value=" " /></td>
+<td><select id = "shipadd" name = "order[]" value = " ">
+<option value= "60">Local Shipping Charges @60</option>
+<option value="120">Outstation Charges @120</option>
+</select></td>
+<td><select id ="shipemploy" name = "order[]" value="">
+<option value= "12">EmpID:12</option>
+<option value="15">EmpID:15</option>
+<option value="23">EmpID:23</option>
+</select></td>
+<td><b><i>Grapes:</i></b><input id="mob" name= "order[]" value=""/></td>
+<td><b><i>Cherry:</i></b><input id="ban" name= "order[]"   value=""/></td>
+<td><b><i>Orange:</i></b><input id="tan" name = "order[]"  value="" /></td>
+<td><b><i>Apples:</i></b><input id="van" name = "order[]" value=""/></td>
+<td><b><i>Pineapple:</i></b><input id="dan" name = "order[]"  value=""/></td>
+<td><b><i>Guava:</i></b><input id="bun" name = "order[]"  value="" /></td>
+<td><b><i>Grapes Green:</i></b><input id="sun" name = "order[]"  value=""/></td>
+<td><b><i>Bananas:</i></b><input id="pun" name = "order[]"  value=""/></td>
+<td><b><i>Peaches:</i></b><input id="tun" name = "order[]"  value=""/></td>
+<td><b><i>Apricots:</i></b><input id="dunn" name = "order[]" value=""/></td>
+<td><b><i>Cashewnuts:</i></b><input id="tuss" name = "order[]"  value=""/></td>
+<td><b><i>Dry Fruits:</i></b><input id="tunes" name = "order[]"  value=""/></td>
+</tr>
+</table><hr>
+<h2>Record 
+Complaints(mp3/ogg/wav formats ONLY supported)</h2><button onClick="https://www.github.com/coolvivel/main/index.html">
+RECORDER</button><button onSubmit="https://www.github.com/coolvivel/main/complaints">SUBMIT</button><hr>
+</fieldset>
+</form>
+
+<!--Payment Bill view-->
+<form>
+<table>
+<tr>
+<td><input type = "button" onclick="myfunction(this)" value ="VIEW BILL" /></td><input type="number" id="mobveri" placeholder="enter otp"><button type="submit">MOBILE OTP</button>
+<td><input type="file" name="myfile" value=""form="bulk"><button onSubmit="https://www.github.com/coolvivel/main/complaints">SUBMIT - Text Format</button><hr>
+</td>
+<td><input type ="button" onclick= "Total()" value = "Authorized Personnel Only"/>
+</td>
+</tr>
+</table>
+</form>
+<hr>
+
+<!--db directory in github-->
+<form id ="expenses" method ="POST" action= 
+"https://www.github.com/coolvivel/main/ecomm/storedatas.js" enctype="multipart/form-data">
+<fieldset>
+ <p>CARD DETAILS
+</p>
+
+NAME:(as per credit card)<input type="text" id="names" value="" /><hr>
+CARD NO:<input type="number" id="card" placeholder="enter 13-19 digits" value= "" required />
+ <hr>
+EXPIRY DT:<input type="tel" id="expiry" value = "" placeholder ="MM/YYYY//YYY/MM" required/>
+ <hr>
+CVV:<input type = "number" id = "cardback" placeholder= "enter 3 - 4 digits from back of card" value="" required />
+ <br>
+Choose Card Issuer: <br>(Speedy Transaction)<select id ="cardsoftype"  name = "pay[]" value = ""  required>
+<option value= "American Express" style ="background-volor:orange; color: white;">American Express/Cash Card</option>
+<option value="China UnionPay">China UnionPay</option>
+<option value="DinersClubCarteBlanche">Diners Club Carte Blanche</option>
+<option value= "DinersClubenRoute">Diners Club enRoute</option>
+<option value= " DinersClubInternational">Diners Club International</option>
+<option value= " DiscoverCard">Discover Card</option>
+<option value= "JCB">JCB</option>
+<option value= " Laser">Laser</option>
+<option value= "MasterCard">MasterCard</option>
+<option value= " Visa">Visa</option>
+<option value= " VisaElectron">Visa Electron</option>
+<option value= " Maestro">Maestro</option>
+<hr>
+</select>
+<button id="gen" onclick="gentoken()">SINGLE USE TOKEN GENERATOR</button>
+<hr>
+<select id ="currency" style="background-color:orange;">
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+</select>
+<button id="pay1" onclick ="extend(this)">PAY BILL</button>
+<hr>
+Invoice No:<input type="number" id="refunding" value=""/><button id="pay2" onclick = "https://www.github.com/coolvivel/main/refund/cancel.js">CANCEL BILL/REFUND</button>
+
+<hr>
+<hr>
+(To use this button only on wrong card entry details):
+<button type="reset">RESET</button><hr>
+</fieldset>
+ </form> 
+<hr> 
+<button id="pay3" onclick = "screenshot()">BILL SCREENSHOT</button><hr>
+<button><input type="file" id ="paypicture" /> UPLOAD BILL SCREENSHOT</button><hr>
+
+<div class="flex-c
+ontainer"><strong>
+GEORGIA GROCERY STORES<p>Mob: 123456789</p>
+<p>Email:abc@gmail.com</p>
+<hr>
+
+<div class="flex-item1">INVOICE BILL
+<hr>
+Dear Customer,<br><br>Thank you for purchasing our products. We look forward to a bright business with us. Please feel free to contact us for any assistance.</strong><br>
+<hr>
+
+<div class="flex-item">Sl No
+
+<div class="flex-item">Products</div>
+
+<div class="flex-item">
+Amount 
+ <div class="flex-item">
+Qty/Net Wt
+<br>
+   </div>  
+  </div>
+ </div>  
+</div>
+<br>
+
+<!--token generator-->
+<script>  
+function gentoken()
+{
+"use strict";
+var x ='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#&_-+()/?!;:=¢¥€|><%';
+var y = x.length;
+var i, txt= "";
+for(i=0; i < 14; i++)
+{
+txt+= x[Math.floor(Math.random() * y)]; 
+}  
+document.getElementById("gen").style.display ="none";
+ }
+
+/*card check*/
+function extend(eve)
+{
+"use strict";
+myfunction(event);
+
+var payoption, i, pays, currency12,
+totaltopay;
+pay=[];
+pays = eve.forms.id("expenses");
+payoption = eve.options[eve.selectedIndex].text;
+
+currency12 = eve.options[eve.selectedIndex].text;
+console.log(payoption + currency12);
+}
+
+//cc values
+var ccname= (document.getElementById("names").value);
+
+var creditcardno = (document.getElementById("card").value);
+
+var ccexpirydt = (document.getElementById("expiry").value);
+
+var cccvv= (document.getElementById("cardback").value);
+
+var cardType, cardtoken, checkstatus;
+
+/*User not choosen card selection, Luhn card method validation*/
+
+var cardno = (document.getElementById("card").value);
+
+var len = cardno.length; 
+var cardType, checkin, chk, valid, checkstatus;
+
+(chk = 0),
+(prodArr = [
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+[0, 2, 4, 6, 8, 1, 3, 5, 7, 9],]),
+(checkin = 0);
+
+while(len--) {
+checkin += prodArr[chk][parseInt(cardno.charAt(len), 10)];
+chk ^= 1;
+}
+
+if(checkin % 10 === 0 && checkin > 0)
+ {
+valid = 'valid';
+ } 
+else
+ {
+valid = 'not valid';
+}
+
+cardtoken = card.toString().replace(/\s+/g, '');
+
+if(checkstatus == 34)
+{
+cardType = "American Express";
+}
+
+if (/^(34)|^(37)/.test(cardtoken)) 
+{
+cardType = 'American Express';
+ }
+ 
+ if (/^(62)|^(88)/.test(cardtoken)) 
+ {
+cardType = 'China UnionPay';
+}
+
+if (/^30[0-5]/.test(cardtoken)) 
+{
+cardType = 'Diners Club Carte Blanche';
+}
+
+if (/^(2014)|^(2149)/.test(cardtoken)) 
+{
+cardType = 'Diners Club enRoute';
+}
+
+if (/^36/.test(cardtoken)) {
+cardType = 'Diners Club International';
+}
+      
+if(/^(6011)|^(622(1(2[6-9]|[3-9][0-9])|[2-8][0-9]{2}|9([01][0-9]|2[0-5])))|^(64[4-9])|^65/.test(cardtoken)
+) {
+cardType = 'Discover Card';
+}
+      
+if (/^35(2[89]|[3-8][0-9])/.test(cardtoken)) {
+cardType = 'JCB';
+}
+
+if (/^(6304)|^(6706)|^(6771)|^(6709)/.test(cardtoken)) {
+cardType = 'Laser';
+}
+
+if (/^(5018)|^(5020)|^(5038)|^(5893)|^(6304)|^(6759)|^(6761)|^(6762)|^(6763)|^(0604)/.test(cardtoken )) {
+cardType = 'Maestro'; 
+}
+
+if (/^5[1-5]/.test(cardtoken )) {
+cardType = 'MasterCard';
+}
+      
+if (/^4/.test(cardtoken )) {
+cardType = 'Visa';
+}
+      
+if(/^(4026)|^(417500)|^(4405)|^(4508)|^(4844)|^(4913)|^(4917)/.test(cardtoken )) {
+cardType = 'Visa Electron';
+}
+console.log(cardtoken  + ' is a(n) ' + cardType + " and it's " + valid);
+
+<? php
+if(!extension_loaded('curl')){
+die('curl not loaded on the computer. Install link <a href=" https://curl.se/download.html">install curl</a>');
+}
+
+//post data
+$post= array();
+//url array
+$url= array();
+//handlers
+$chs= array();
+
+//total amt dtls
+$post[]= [
+'total_payment'=>"grandfruit",
+"authtoken"=>"txt"
+];
+
+//mode of currency for payment
+$post[]=[
+'currency'=>
+"currency12",
+"card_type"=>"payoption";
+];
+
+//cc details
+$post[]= [
+"ccnames"=>"ccname",
+"ccno"=>"creditccno",
+"ccexp"=>"ccexpirydt",
+"cc_cvv"=>"cccvv",
+"cardtypes"=>"cardType"
+];
+
+$url= "https://web.na.bambora.com/scripts/payment/payment.asp";
+$url= "https://../bambora.com/.../endpoint2";
+
+$mh= curl_multi_init($url);
+
+//multiple requests
+foreach($urls as $key=>$url){
+$chs[$key]= curl_init($url);
+curl_setopt($chs[$key], CURLOPT_RETURNTRANSFER, true);
+curl_setopt($chs[$key], CURLOPT_POST, true);
+curl_setopt($chs[$key], CURLOPT_POSTFIELDS, $post[$key]);
+}
+
+//add multi handler
+curl_multi_add_handler($mh, $chs[$key]);
+
+//executing multiple requests
+$run= null;
+do{
+curl_multi_exec($mh, $run);
+}while($run);
+
+//getting multiple responses
+foreach(array_keys($chs) as $key){
+$error= curl_error($chs[$key]);
+$last_effective_url= curl_getinfo($chs[$key], CURLINFO_EFFECTIVE_URL);
+$time= curl_getinfo($chs[$key], CURLINFO_TOTAL_TIME);
+$response= curl_multi_getcontent($chs[$key]); 
+
+if(!empty($error)){
+echo 'Reported error: \n'.$error;
+}else{
+echo "Request to '$lasteffectiveurl'  'responded $response in $time seconds \n';
+}
+//remove handler
+curl_multi_remove_handler($mh, $chs[$key]);
+}
+//close handler
+curl_multi_close($mh);
+
+curl --header "X-MyHeader:123456" www.bambora.com
+?>
+
+//curl not installed on users system, ajax method
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange= function(responseTxt, statusTxt, xhr){
+if(xhr.readystate= 4 && xhr.status = 200){
+xhr.onload= alert(xhr.responseTxt);
+}else{
+xhr.onerror= alert(xhr.statusTxt);
+}
+xhr.open("POST", $url, true);
+Access-Control-Allow-Credentials: true;
+xhr.setRequestHeader("Authorization:", txt);
+xhr.setRequestHeader('Content-Text', 'application/x-www-form-urlencoded, chartset= UTF-8');
+xhr.send($post, txt);
+ }
+}
+</script> 
+
+<!--bill calculations & output-->
+<p id = "dist">
+</p>
+
+<script>
+var i, order, cost,  xxp, yy, zz;
+alert("Minimum purchase orders@Rs.3,500 to avail discount offers...Mega BONAZA awaits customers. Please note that this website works offline too.");
+
+function myfunction(event)
+{
+cost = " ";
+xxp = document.getElementsByName("order[]");
+order = document.forms[0];
+
+for(i =0; i < xxp.length; i++)
+ {
+yy = xxp[i];
+cost = cost + "order[" + i + "].value" + yy.value + "<br/> ";
+
+var grap, cherr, oran, apple, papple, guav, gragreen, bana, peach;
+var apri, cashew, dryfr; 
+var grapenet, cherrynet, orangenet, applenet, papplenet, pinenet, guavanet;
+var greennet, banananet, peachnet, aprinet, cashnet, drynet;
+var netwt, totalwt, finalwt;
+
+grapenet = Math.floor(xxp[6].value);
+cherrynet = Number(xxp[7].value);
+orangenet = Number(xxp[8].value);
+applenet = Math.floor(xxp[9].value);
+papplenet = xxp[10].value;
+pinenet = (papplenet *1);
+guavanet = +xxp[11].value;
+greennet = ~~xxp[12].value;
+banananet = Math.floor(xxp[13].value);
+peachnet = Number(xxp[14].value);
+aprinet = Number(xxp[15].value);
+cashnet = Math.floor(xxp[16].value);
+drynet = Math.floor(xxp[17].value);
+
+netwt = [grapenet, cherrynet, orangenet, applenet, pinenet, guavanet, greennet, banananet, peachnet, aprinet, cashnet, drynet];
+
+totalwt = netwt.filter(fund);
+
+function fund(value, index, array)
+{
+return value;
+}
+
+finalwt = netwt.reduceRight(fundsall)
+function fundsall(total, value, array)
+{
+return total + value;
+}
+
+grap = (xxp[6].value * 120.00);
+
+cherr = (xxp[7].value * 240.00);
+
+oran = (xxp[8].value *140.50);
+
+apple = (xxp[9].value * 230.00);
+
+papple = (xxp[10].value * 120.50);
+
+guav = (xxp[11].value * 300);
+
+gragreen = (xxp[12].value * 300.00);
+
+bana = (xxp[13].value * 100.00);
+
+peach = (xxp[14].value * 140.50);
+
+apri = (xxp[15].value * 270.50);
+
+cashew = (xxp[16].value * 140.50);
+
+dryfr = (xxp[17].value * 290.50);
+
+var frui = [];
+var grapes, cherries, oranges, apples, papples, guavas;
+var grapegreen, bananas, peaches, apricots, cashewnuts, dryfruits;
+var fruitall, discount;
+
+grapes = parseFloat(Number(grap));
+cherries = parseFloat(Number(cherr));
+oranges = parseFloat(Number(oran));
+apples = parseFloat(Number(apple));
+papples = parseFloat(Number(papple));
+guavas = parseFloat(Number(guav));
+grapegreen = parseFloat(Number(gragreen));
+bananas = parseFloat(Number(bana));
+peaches = parseFloat(Number(peach));
+apricots = parseFloat(Number(apri));
+cashewnuts = parseFloat(Number(cashew));
+dryfruits = parseFloat(Number(dryfr));
+
+frui = [grapes, cherries, oranges, apples, papples, guavas, grapegreen, bananas, peaches, apricots, cashewnuts, dryfruits];
+fruitall = frui.reduce(myfunda);
+discount = 250;
+
+var charge = parseFloat(xxp[4].value);
+var custo = frui.push(xxp[2].value);
+var customer = frui.toString(custo);
+var orddt = (xxp[0].value);
+
+function myfunda(total, value, index, array)
+{
+return total + value;
+}
+
+if(fruitall > 3500)
+{
+grandfruit= ((fruitall - discount) + charge);
+}
+else
+{
+grandfruit= (fruitall + charge);
+   }
+}
+
+var custdtls= [];
+
+var custo, customer, mobileno, addressee, addr, emp, employ;
+
+custo = custdtls.push(xxp[2].value);
+
+customer = custdtls.toString(custo);
+
+mobileno = (parseInt(Number(xxp[1].value)));
+
+addressee = custdtls.push(xxp[2].value);
+
+addr = custdtls.toString(addressee);
+
+emp= shipemploy.options[shipemploy.selectedIndex].value;
+
+custdtls = customer+orddt+ mobileno+addr+emp;
+ 
+ <!-- invoice generator -->
+var billno ='0123456';
+var bill= billno.length;
+var i, invoice= "";
+for(i=0; i < 6; i++)
+{
+invoice+= billno[Math.floor(Math.random() * bill)]; 
+}  
+ 
+ <!-- mobile otp generator, verification & invoice sender -->
+var mobotpno ='0123456';
+var otp= mobotpno.length;
+var i, mobileotp= "";
+for(i=0; i < 6; i++)
+{
+mobileotp+= mobotpno[Math.floor(Math.random() * otp)]; 
+}  
+ 
+document.getElementById("dist").innerHTML= "INVOICE NO:" + " " + invoice + "<br>" + "DATE:" + " " + orddt + "<hr>" + "1." + "   " + "GRAPES" + "   " + grap + "  " + grapenet + "Kg" + "<hr>" + "2." + "  " + "CHERRY" + "  " + cherr + " " + cherrynet + "Kg" + "<hr>" + "3." +"  " + "ORANGES" + " " + oran + " " + orangenet + "kg" + "<hr>" +
+"4." + "  " + "APPLES" + "  " + apple + " " + applenet + "Kg" + "<hr>" + "5."+"  "
++ "GUAVA" + " " + guav + " " + guavanet + "Kg" +"<hr>" + "6." + "  "+
+"PINEAPPLE" + " " + papple + " " + pinenet + "Kg" + "<hr>" + "7." +
+"GREEN GRAPES" + " " + gragreen + "  " + greennet + "Kg" + "<hr>" +
+"8."+ "  " + "BANANA" + " " + bana + "  " + banananet + "Kg" + "<hr>" + "9." + "  "+
+"PEACHES" + "  " + peach + "  " + peachnet + "Kg" + "<hr>" + "10." + "  " +
+"APRICOT" + " " + apri + "  " + aprinet + "Kg" + "<hr>" + "11." + "  " +
+"CASHEWNUT" + " " + cashew + "  "+ cashnet + "Kg" + "<hr>" + "12."+ "  "+ 
+"DRY FRUITS" + "  " + dryfr + "  " + drynet + "Kg" + "<hr>" +
+"Total Amount:" + " " + fruitall.toFixed(2) + "<br>" +
+"Shipping Amount:" + " " + charge.toFixed(2) + "<br>" +
+"Amount To Pay:" + "  " + "Rs." + grandfruit.toFixed(2) +"<hr>" +
+"Total Products:" + " " + "__/12" + "<br>" + "Total Net Weight:" + " " + finalwt + "Kgs";
+
+screenshot();
+
+function screenshot ()
+{
+const screenshotTarget = document.body; html2canvas(screenshotTarget).then((canvas) => { const base64image = canvas.toDataURL("image/png"); window.location.href ="https://api.V1.checkout.bambora.com/sessions";});
+ }
+}
+</script>
+
+<p id ="demo4">
+</p>
+
+<script>
+function forward()
+{
+window.history.forward();
+}
+
+function backward()
+{
+window.history.back();
+}
+</script>
+
+<button onClick="cooks()">COOKIES</button>
+
+<script>
+function cooks(){
+alert('Customer agrees to accept cookies to enhance website performance.  NO personal data will ever be collected.'); 
+
+setCookie();
+
+function setCookie(cname, cvalue, exdays) {
+var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+getCookie();
+function getCookie(cname) {
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for(var i=0; i<ca.length; i++) {
+var c= ca[i];
+while(c.charAt(0)==' ') 
+c= c.substring(1);
+if(c.indexOf(name) == 0) 
+return c.substring(name.length, c.length);
+ }
+return "";
+}
+
+checkCookie();
+function checkCookie() {
+var user = getCookie("username");
+if(user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+      }
+    }
+  }
+}   
+</script>
+
+<a href="tel: +1234567890"><b>Call via Skype</b></a>
+
+<!-- To check later for chat
+<a href="https://github.com/.../"><b>Click to chat</b></a><br/>
+-->
+<a href="https://github.com/coolvivel/main/ scanner.html">
+Click to Check Prices</a>
+<script>
+module.exports = {function extend(eve), function mtfunction(event)};
+</script>
+</body>
+</html>
