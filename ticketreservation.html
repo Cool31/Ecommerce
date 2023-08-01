@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<html manifest="demo.appcache">
+<head>
+<title>Flight Reservation
+ System</title>
+<meta name="viewport" content="width=device-width initial-scale =1">
+<script src="/..../datas.js"></script> 
+<script src="/..../reminder.js"></script> 
+<script src="/..../customer.js"></script> 
+<script src="./js/cookies12.js"></script>
+<script src="/..../creditdb.js"></script> 
+<script src="/....></script>/creditvalidity.php"></script> 
+<script src="/..../refunds.js"></script> 
+<script src="/..../flightprint.php"></script> 
+<script src="/..../customerdatavalidity.php"></script> 
+<script src="/..../authorize.php"></script> 
+<script src="/..../customervalidation.php"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://kit.fontawesome.com/a86d3779f6.js" crossorigin="anonmyous"></script>
+<script src ="./customervalidity.php"></script>
+<script src ="./threecurrencyconvert.js"></script>
+<script src ="./cookph.php"></script>
+<script src ="./latestticketfare.js"></script>
+</script src="
+https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<style>
+*{
+box-sizing: border-box;
+}
+
+.printout{
+height:60px;
+width:670px;
+background-color:green;
+color: white;
+display:block;
+position: absolute;
+top: 170px;
+}
+
+table, th{
+border:10px solid black;
+background-color:red;
+width:180px;
+}
+
+#seats{
+height:250px;
+width:630px;
+position:absolute;
+top:190px;
+background-color:indigo;
+font-size:18px;
+color: white;
+display:inline-block;
+overflow:scroll;
+border:10px solid brown;
+}
+
+#myta tr, td{
+border:10px solid yellow;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 3px;
+padding: 2px;
+border-collapse: collapse;
+font-size: 13px;
+background-color: green;
+color: orange;
+value-align: left;
+column-gap:10px;
+row-gap:30px;
+}
+
+#myta tr, td, button{
+background-color: blue;
+display: inline-block;
+}
+
+table{
+border:12px solid black;
+padding: 20px;
+width: 38rem;
+height: 15rem;
+display: inline-block;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 20px;
+border-collapse: collapse;
+font-size: 1.10rem;
+background-color: green;
+color: orange;
+text-align: center;
+overflow: scroll;
+reset: horizontal;
+}
+
+#clas1, #dats, #flights, #tickets{
+color:red;
+display:inline;
+}
+
+#expenses, #latest{
+width:37rem;
+border: 20px solid red;
+display: inline-block;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 20px;
+border-collapse: collapse; 
+font-size: 1.10rem;
+background-color: green;
+color: white;
+text-align: center;
+}
+
+button{
+color:white;
+background-color:green;
+font-family:Arial;
+border-radius:20px;
+}
+
+input[type="text"]{
+color:red;
+background-color:orange;
+}
+
+input[type="number"]{
+color:white;
+background-color:grey;
+}
+
+/* For mobile phones: */
+
+[class*="col-"]
+{
+ width: 100%;
+ }
+
+@media only screen and (min-width: 600px)
+{
+/* For tablets: */
+.col-s-1 {
+width: 8.33%;
+}
+.col-s-2 {
+width: 16.66%;
+}
+.col-s-3 {width: 25%;}
+.col-s-4 {
+width: 33.33%;
+}
+.col-s-5 {
+width: 41.66%;
+}
+.col-s-6 {width: 50%;}
+.col-s-7 {width: 58.33%;
+}
+.col-s-8 {width: 66.66%;
+}
+.col-s-9 {width: 75%;
+}
+.col-s-10 {
+width: 83.33%;
+}
+.col-s-11 {width: 91.66%;
+}
+.col-s-12 {
+width: 100%;}
+}
+
+@media only screen and (min-width: 768px)
+{/* For desktop: */
+.col-1 {
+width: 8.33%;
+}
+.col-2 {
+width: 16.66%;
+}
+.col-3 {width: 25%;
+}
+.col-4 {
+width: 33.33%;
+}
+.col-5 {
+width: 41.66%;
+}
+.col-6 {width: 50%;
+}
+.col-7 {
+width: 58.33%;
+}
+.col-8 {width: 66.66%;
+}
+.col-9 {width: 75%;
+}
+.col-10 {
+width: 83.33%;
+}
+.col-11 {width: 91.66%;
+}
+.col-12 {width: 100%;
+}
+}
+</style>
+<script>
+$.noConflict();
+$(document).ready(function(){
+$("button").click(function(){
+$("#expenses").load("./customers"), function(responseTxt, statusTxt, xhr){
+if (statusTxt=="success"){
+("successful" + xhr.responseTxt);
+}  
+if (statusTxt=="error"){
+alert("failed to load" + xhr.status +':'+ xhr.statusTxt);
+  }
+ }
+}),
+$.post("https://web.na.bambora.com/scripts/payment/payment.asp", "./customers",
+  [
+  cc: airdtls,
+  airfare: totalairfare
+  ], function(data, status){
+ alert("Data:"+ data+ "\nStatus: "+ status);
+  }),
+$.get("https://api.V1.checkout.bambora.com/sessions", "./customers", function(data, status){
+alert("Returned Data:"+ data+ "\nStatus: "+ status);
+  })
+})
+</script>
+</head>
+
+<body>
+<button onclick="forward()"/>Next Page</button><button onclick="backward()"/>Previous Page</button><hr>
+
+<form id="seats">
+<legend><b>QATAR AIRWAYS - FLIGHT TICKET RESERVATION BOOKING SYSTEM</b></legend>
+<fieldset>
+<select id=
+"clas1" name = "ticketing">
+<option value="0" disabled selected >Please select class</option>  
+<option value="first">First</option>
+  <option value="economy">eco</option>
+ <option value="premium">Premium</option>
+ <option value="business">business</option></select>
+<select id = "tickets">
+<option value="0" disabled selected>Please select Passengers</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select><br>
+Flight Date:
+<input type="date" value="" id="dats" name="flightdates">
+<select id = "flights">
+<option value="0" disabled selected>Please select flight No</option>
+<option value="100">100</option>
+<option value="200">200</option>
+<option value="300">300</option>
+<option value="400">400</option>
+<option value="500">500</option>
+</select> <br>
+Enter Discount(if any):
+<select id="dis">
+<option value= "0" disabled selected>
+Please Select Discount</option>
+<option value= "0">No_Discount</option>
+<option value= "150">Handicapped</option>
+<option value= "250">MedicalDisability</option>
+<option value= "350">Aircrash</option>
+<option value= "450">PermanentDisability</option>
+<option value= "480">AirFlightConcessions</option>
+</select><br>
+Luggage Weight:<select id="wt" name="weighting"><option value= "0" disabled selected>  
+Please Select Weight</option>
+<option value= "0"> Upto30KgMax</option>
+<option value= "0">Noluggage</option>
+<option value= "250">Above30Kg</option> 
+</select><br>
+<b><i>Ticket Fare:</i></b><select id ="ticketfare" name="faring">
+<option value= "0" disabled selected>
+Please Select Flight Choice</option>
+<option value= "100">Sydney Chicago  Flight100-First</option>
+<option value= "110">Sydney Chicago Flight100-Eco</option>
+<option value= "120">Sydney Chicago Flight100-Premium</option>
+<option value= "130">Sydney Chicago Flight100-Business</option>
+<option value= "150">Saudi-China Flight200-First</option>
+<option value= "160">Saudi-China Flight200-Eco</option>
+<option value= "160">Saudi-China Flight200-Premium</option>
+<option value= "170">Saudi-China Flight200-Business</option>
+<option value= "200">Heathrow-New York Flight300-First</option>
+<option value= "210">Heathrow-New York Flight300-Eco</option>
+<option value= "220">Heathrow-New York Flight300-Premium</option>
+<option value= "230">Heathrow-New York Flight300-Business</option>
+<option value= "250">Rome-Florida Flight400-First</option>
+<option value= "260">Rome-Florida Flight400-Eco</option>
+<option value= "270">Rome-Florida Flight400-Premium</option>
+<option value= "280">Rome-Florida Flight400-Business</option>
+<option value= "300">Melbourne- Paris Flight500-First</option>
+<option value= "310">Melbourne- Paris Flight500-Eco</option>
+<option value= "320">Melbourne- Paris Flight500-Premium</option>
+<option value= "340">Melbourne- Paris Flight500-Business</option>
+<option value= "360">
+Other Arrival Flights</option>
+</select><br>
+<br>
+<button id="seat" onclick="buyticket()" name="money">AIRFARE</i></b>   
+</button><button id="seating" onClick="buyticket()" disabled><b>SEAT AVAILABILITY</b></button>
+</fieldset>
+<hr>
+</form>  
+
+<div id="seats1">
+</div>
+
+<div id="printout">
+<table>    
+<tr>
+<th>Booked Class  Tickets</th>
+<th>Tickets Available</th>
+</tr>
+<tr>
+<th>Booked Flights</th>
+<th>Booked Dates</th>
+</tr>
+</table>
+</div>
+<br><br>
+<form class="air" action="https://..../customervalidation.php "
+method="post" accept-charset ="UTF-8" enctype="multipart/form-data">
+<fieldset>
+<table id= "myta">
+<tr>
+<td>
+<b><i>Customer Name:</i></b>
+<input type="text" id="cust" value="" name="custo"></td>
+<td><b><i>Nationality:</i></b><input type="text" id="nation" value=""/></td>
+<td>
+<b><i>Gender:</i></b>
+<input type = "radio" id="gend"  value= "Male" name="gendo">Male
+<input type = "radio" id="gend" name= "gendo"  value = "Female">Female
+<input type = "radio" id="gend"  value = "Transgender" name="gendo">Transgender
+</td>
+<td><b><i>DOB:</i></b><input type="date" id="birth"></td>
+<td><b><i>Mobile Number:</i></b><input type="number"  id="mob"/></td>
+<td><b><i>E-mail ID:</i></b><input type="email" id="ema" value=""/></td>
+<td><b><i>Photo ID:</i></b><input type="file" id="photo" name="photos" value="scan pp photo " /></td>
+<td>Occupation:<select id = "custoccup" name="occupy">
+<option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "doctor">Medicine</option>
+<option value="protection">Airlines Safety Dept</option>
+option value="others">Other Occupation</option>
+</select></td>
+<td>Reason For Travel:<select id ="Reason"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "Job">Job</option>
+<option value="visitvisa">Visit Visa</option>
+<option value="treatment">Medical Treatment</option>
+<option value="Official">Official</option>
+<option value="immigration">Immigration</option>
+<option value="Education">Education</option>
+<option value="Funeral">Funeral</option>
+<option value="other">Others</option>
+</select></td>
+
+<td><b><i>Customer Identification:</i></b><input id="ban   value="ex: mole on neck"/>
+</td><
+<td>Family Travel:<select id = "family">
+<option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "infant < 2 yrs">Infant</option>
+<option value="no infant">No infant</option>
+<option value="kids + infant">Kids + Infant</option>
+<option value="mom,dad+kids">Family</option>
+<option value="mom,dad">No kids</option>
+<option value="child">Children</option>
+<option value="maid + family">Maid</option>
+<option value="relative">Relatives & Family</option>
+<option value="indl"> Indl & Others</option>
+<option value="others">Others</option>
+<option value="none">Indl</option>
+<td><b><i>Ist Member PP Number:</i></b><input type = "text" id="ppfirst" name="ppt" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="ppfirstvalid" name= "ppt1"/>
+</td>
+<td><b><i>IInd Member PP Number:</i></b><input type = "text" id="ppsecond" name="ppt2" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="ppsecondvalid" 
+</td>
+<td><b><i>3rd PP Number:</i></b><input type = "text" id="ppthird" name="ppt3" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="ppthirdvalid"/>
+<td><b><i>4th PP Number:</i></b><input type = "text" id="pp4" name="ppt4" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="ppvalid5"/>
+<td><b><i>5th PP Number:</i></b><input type = "text" id="pp5" name="ppt5" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="pp5valid"/>
+</td>
+</select>
+</td>
+<td><b><i>Customer/Other Members Health Status:</i></b><select id="van"/>
+<option value = "not selected" disabled selected>
+Please Select</option>  
+<option value ="Healthy">Fit to Travel</option>
+<option value ="unfit">Certified to Travel on medical/compassionate grounds</option>
+</td>
+</select></td>
+<td><b><i>Immigration Status:</i></b><select id="dan" ><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="permitted">Normally Applicable</option>
+<option value="permitted">Not Applicable</option></select>
+</td>
+<td><b><i>Booking Reference Number & Date:</i></b><input type="date"  id="books" name="boo">
+<button id="gen" onclick="gentoken()" style="color: orange;">BOOKING REF NO & DATE ** ONE-WAY</button>
+</td>
+<td>
+Seat Preference:<input type="checkbox" value="A"  id =
+"seatfavor" name="bookseat">A-window Seat  
+<input type="checkbox" value="C"  id =
+"seatfavor">C-
+Middle Seat  
+<input type="checkbox" value="D" id=
+"seatfavor">D-
+Side Seat  
+<input type="checkbox" value="F" id =
+"seatfavor" >F-
+Window Seat 
+</td>
+<td><b><i>DEPARTURE INFORMATION: - (USE ONLY TO CHANGE FLIGHT ROUTES)</i>
+</b><br>
+Destination Country:<input type="text" id="dest" nane="destiny" placeholder = "Enter Destination country"><br> Departure Date:<input type="date" id ="depar" name="depdate" placeholder = "Enter date"><br>
+Departure Time:<input type ="time" id="tim" placeholder = "enter time">
+</td>
+<td><b><i>ARRIVAL INFORMATION:</i>
+</b><br>
+Arrival Country:<input type="text" id="arrival" name="arrived" placeholder= "Enter Arrival country"><br>
+Arrival Date:<input type="date" id ="arrdt" name="arrdate" placeholder= "Enter date"><br>
+Arrival Time:<input type ="time" id="arrtim"  placeholder = "enter time"> 
+</td>
+<td><b><i>Baby Bassinet Seat:</i></b><Select id="babyseat" nam="babywt"><option value = "not selected" disabled selected>
+Please Select</option>
+ <option value="11 kg">Baby Wt 11 kg</option>
+ <option value="<11 lbs">Baby Wt Less than 11 lbs</option> 
+<option value="none">No Baby on travel</option> 
+</Select>
+<Select id="babies" name="babies" ><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "requested">Bassinet Seat - Reqd</option>  
+<option value= "not_reqd">Bassinet Seat - Not Reqd</option>  
+</Select> 
+</td>
+<td><b><i>Flight Operation:</i></b>
+<select id ="direction"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="direct">Direct Flight</option>
+<option value="connection">Connection Flight</option>
+</select></td>
+<td><b><i>Meals:</i></b><select id ="food" name="foody"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="veg">Veg</option>
+<option value="nonveg">Nonveg</option>
+<option value="not reqd">Not Reqd</option>
+</select></td>
+<td><b><i>Checkin Reporting Time:
+</i></b><select id ="chkin"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="4 hours before flight">4 Hours</option></select>
+Gate:</i></b><select id ="gate" ><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="Gate 1">Gate 1</option>
+<option value="Gate 2">Gate 2</option>
+</select></td>
+<td><b><i>Ticket Issuer:</i></b><select id ="issuer" ><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="Airlines">Airlines</option>
+<option value="Agent">Travel Agent</option>
+</select>
+</td>
+<td><b><i>Mode of Payment:</i></b><select id ="credit" name="paymeth" ><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="
+CC">Credit Card</option>
+<option value="
+Cash">Pay By Cash</option></select>
+<select id ="currency" name="paycurr" style="background-color:orange;"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+<option value= "QAR">Qatari Rial </option>
+<option value= "CLP">Yuan Renminbi</option>
+<option value= "HKD">Hongkong Dollar</option>
+<option value= "IDR">Iranian Rial</option>
+<option value= "SAR">Saudi Rial</option>
+<option value= "AED">UAE Dirham</option>
+<option value= "KWD">kuwati Dinar</option>
+<option value= "OMR">Rial Omani</option></select>
+<br>
+<button id="pay1" onclick ="./currencyconverter.html">Currency Converter</button> 
+</td>
+<hr>
+<td><b><i>Ticket Number:</i></b>
+<button id="tktnmbr" name="ticknumb" onclick=
+"tick()">TICKET NUMBER</button>
+</td>
+<tr><td>
+<button onclick="seat1()" id="ticketdisp" name="tickview">VIEW TICKET</button>
+</td></tr>
+<tr><td>
+<button id="generator" name="ticktok" onclick=
+"tickettoken()">SINGLE ONE-TIME USE TOKEN GENERATOR</button></td></tr>
+<hr>
+</fieldset>
+</table>
+</form>
+
+<form id ="expenses"name="cardpayment" method ="POST"  enctype="multipart/form-data">
+<fieldset>
+ <p>CARD DETAILS
+</p>
+NAME:(as per credit/debit card)<input type="text" id="names" value="" /><hr>
+CARD NO:<input type="number" id="card" placeholder="enter 13-19 digits" value= "" required />
+ <hr>
+EXPIRY DT:<input type="tel" id="expiry" value = "" placeholder ="MM/YYYY//YYY/MM" required/>
+ <hr>
+CVV:<input type = "number" id = "cardback" placeholder= "enter 3 - 4 digits from back of card" value="" required />
+ <br>
+Choose Card Issuer: <br>(Speedy Transaction)<select id ="cardsoftype"  name = "pay[]" value = ""  required>
+<option value= "American Express" style ="background-volor:orange; color: white;">American Express/Cash Card</option>
+<option value="China UnionPay">China UnionPay</option>
+<option value="DinersClubCarteBlanche">Diners Club Carte Blanche</option>
+<option value= "DinersClubenRoute">Diners Club enRoute</option>
+<option value= " DinersClubInternational">Diners Club International</option>
+<option value= " DiscoverCard">Discover Card</option>
+<option value= "JCB">JCB</option>
+<option value= " Laser">Laser</option>
+<option value= "MasterCard">MasterCard</option>
+<option value= " Visa">Visa</option>
+<option value= " VisaElectron">Visa Electron</option>
+<option value= " Maestro">Maestro</option>
+<hr>
+</select>
+<button id="gen" name="cardtok" onclick="gentoken()">SINGLE USE TOKEN GENERATOR</button>
+<hr>
+<select id ="currency" style="background-color:orange;">
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+</select>
+<button id="pay1" name="paytick" onclick ="airport()">PAY CREDIT/DEBIT - TICKET</button>
+<hr>
+Transaction ID No:<input type="number" id="refunds" name="transid" value=""/><button id="pay3></button>" onclick = "./refunds.js">REFUND</button>
+<hr>
+<hr>
+(To use this button only on wrong card entry details):
+<button type="reset">RESET</button><hr>
+</fieldset>
+ </form> 
+<br>
+<form id="latest" name="lattick" action="/../rsaoeapkey.html">
+<fieldset>  
+<legend>Official Authentication Use Only</legend> 
+<td><b><i>
+Username:<input type="text" name="user" onfocus="background-color:red;"><br> Encryption:<keygenname="security">
+<br>
+<button onClick="./rememberme.php">Remember Me</button>
+<input type="submit">
+</i></b></td><br>       
+Ticket Price (use only if prices changed):</i></b><br>Enter Latest First Class Ticket Price:<input type="number" id = "price"   disabled>
+<br>
+Enter Latest Economy Ticket Price:<input type="number" id="priced"   disabled><br>
+Enter Latest Premium Ticket Price:<input type="number" id="price1"   disabled><br>
+Enter Latest Business Ticket Price:<input type="number" id="price2"   disabled><br>
+Enter Latest Luggage Wt Price(if any):<input type="number" id="weight"   disabled><br>
+<select id ="currency1"  name="weightage" style="background-color:orange;" disabled>
+<option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+<option value= "QAR">Qatari Rial </option>
+<option value= "CLP">Yuan Renminbi</option>
+<option value= "HKD">Hongkong Dollar</option>
+<option value= "IDR">Iranian Rial</option>
+<option value= "SAR">Saudi Rial</option>
+<option value= "AED">UAE Dirham</option>
+<option value= "KWD">kuwati Dinar</option>
+<option value= "OMR">Rial Omani</option>
+<button id="pay1" onclick ="./currencyconverter.html">Currency Converter</button>
+</select><br>
+<td><b><i>Latest Airport Tax Price (use only if taxes changed):</i></b><br>
+Airport Tax:<input type="number" id= "currenttax" name="airtax" disabled><br>
+<input type="submit" id="submits" hidden>
+<button onSubmi="latest()" name="sybmits" id="submits">LATEST TICKET PRICES</button>
+</fieldset>
+</form>
+
+<a href= "upi://pay?pn=<Name>&pa=<UPI ID>&cu=<Currency Code>">Credit/Debit Card Payments(Local)</a>
+
+<p id="mess"></p>
+<p id="airmess"></p>
+<p id="demos"></p>
+
+<body>
+<script> 
+var flight100=flight200=flight300=flight400=flight500=40;
+var totalseats=40;
+var dating=clasarr=flightoff=flightnumb=balseating=[];
+var i, ticket, flightno,clas;
+var seats=datsz=bookedflights=datts=storedat=totaldaily=[];
+var firstseats100=
+firstseats200=firstseats300=firstseats400=firstseats500=40;
+var ecoseats100=ecoseats200=ecoseats300=ecoseats400=ecoseats500=40;
+var premiumseats100=premiumseats200=premiumseats300=premiumseats400=premiumseats500=40;
+var busiseats100=busiseats200=busiseats300=busiseats400=busiseats500=40;
+var totalsoldout=0;
+var taxes1= 350;
+var discountfares,   fare, luggage, destinations,totaldailysales=0, totalairfare=0;
+
+for(i=0; i<=totalseats; i++){
+function buyticket(){  
+datts=document.getElementById("dats").value;
+dating[i]=datts;
+datsz[i]+=
+dating[i];
+
+ticket= tickets.options[tickets.selectedIndex].value;
+
+clas= clas1.options[clas1.selectedIndex].value;
+clasarr[i]=clas;
+flightno= flights.options[flights.selectedIndex].value;
+
+luggage= wt.options[wt.selectedIndex].value;
+fare= ticketfare.options[ticketfare.selectedIndex].value; 
+destinations=ticketfare.options[ticketfare.selectedIndex].text; 
+
+discountfares= dis.options[dis.selectedIndex].value;
+var pars= parseInt(luggage);
+var disco= parseInt(discountfares);
+totalairfare= (parseInt(fare*ticket)+ taxes1+pars)-disco;
+totaldailysales+=totalairfare;
+
+if (clas=='first' &&
+flightno=='100'){
+firstseats100=firstseats100-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date "+datts + " on flight: "+ flightno + " for " + clas+ " class is: "+ firstseats100 + ". Only "+ firstseats100 + " 1st class tickets left. Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"/"+ datts+"**"+ firstseats100 + " seats" + "**" + destinations+ "<hr>";
+} else if  (clas=='economy' &&
+flightno=='100'){
+ecoseats100=ecoseats100-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date "+ datts + " on flight: "+ flightno + " for " + clas + " class is  "+ ecoseats100 + ". Only "+ ecoseats100 + " economy class tickets left.  Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+ datts+"**" +ecoseats100 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='premium' &&
+flightno=='100'){
+premiumseats100=premiumseats100-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ premiumseats100 + ". Only "+ premiumseats100 + " premium class tickets left. Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ premiumseats100 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='business' &&
+flightno=='100'){
+busiseats100=busiseats100-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ busiseats100 + ". Only "+ busiseats100 + " business class tickets left. Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ busiseats100 + " seats" + "**" + destinations+ "<hr>";
+}
+
+if (clas=='first' &&
+flightno=='200'){
+firstseats200=firstseats200-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date "+ datts + " on flight: "+ flightno + " for " + clas + " class is  "+ firstseats200 + ". Only "+ firstseats200 + " first class tickets left. Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ firstseats200 + " seats" + "**" + destinations+ "<hr>";
+} else if   (clas=='economy' &&
+flightno=='200'){
+ecoseats200=ecoseats200-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date  " + datts + " on flight: "+ flightno + " for " + clas + " class is  "+ ecoseats200 + ". Only "+ ecoseats200 + " economy class tickets left. Book now soon");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+ datts+"**"+    ecoseats200 + " seats" + "**" + destinations+ "<hr>";
+} else if (clas=='premium' &&
+flightno=='200'){
+premiumseats200=premiumseats200-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment.  Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ premiumseats200 + ". Only "+ premiumseats200 + " premium class tickets left. Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+ datts+"**"+ premiumseats200 + " seats" + "**" + destinations+"<hr>";
+} else if (clas=='business' &&
+flightno=='200'){
+busiseats200=busiseats200-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ busiseats200 + ". Only "+ busiseats200 + " business class tickets left. Book now soon!!");
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ busiseats200 + " seats" + "**" + destinations+"<hr>";
+}
+
+if (clas=='first' &&
+flightno=='300'){
+firstseats300=firstseats300-ticket;
+alert("Your. Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ firstseats300);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ firstseats300 + " seats" +  "**" + destinations+"<hr>";
+} else if (clas=='economy' &&
+flightno=='300'){
+ecoseats300=ecoseats300-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ ecoseats300);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/"+flightno + "**"+datts+"**"+ ecoseats300 + " seats" +"**" + destinations+"<hr>";
+} 
+
+if (clas=='premium' &&
+flightno=='300'){
+premiumseats300=premiumseats300-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ premiumseats300);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ premiumseats300 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='business' &&
+flightno=='300'){
+busiseats300=busiseats300-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ busiseats300);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ busiseats300 + " seats" +"**" + destinations+"<hr>";
+}
+
+if (clas=='first' &&
+flightno=='400'){
+firstseats400=firstseats400-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ firstseats400);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**" +datts+"**"+ firstseats400 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='economy' &&
+flightno=='400'){
+ecoseats400=ecoseats400-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ ecoseats400);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ ecoseats400 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='premium' &&
+flightno=='400'){
+premiumseats400=premiumseats400-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ premiumseats400);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ premiumseats400 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='business' &&
+flightno=='400'){
+busiseats400=busiseats400-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ busiseats400);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ busiseats400 + " seats" +"**" + destinations+"<hr>";
+}
+
+if (clas=='first' &&
+flightno=='500'){
+firstseats500=firstseats500-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ firstseats500);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ firstseats500 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='economy' &&
+flightno=='500'){
+ecoseats500=ecoseats500-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ ecoseats500);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+ datts+"**"+ ecoseats500 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='premium' &&
+flightno=='500'){
+premiumseats500=premiumseats500-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ premiumseats500);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ premiumseats500 + " seats" +"**" + destinations+"<hr>";
+} else if (clas=='business' &&
+flightno=='500'){
+busiseats500=busiseats500-ticket;
+alert("Your Tickets Booked. Make Payment via CC to confirm bookings. Check Issued Ticket No after successful payment. Tickets available on date"+" "+ datts + " "+ "on flight: "+ flightno + " "+ "for " +" "+ clas+" "+"class is  "+ busiseats500);
+document.getElementById("seats").innerHTML+=clasarr[i] + "/" + flightno +"**"+datts+"**"+ busiseats500 + " seats"+"**" + destinations+"<hr>"; 
+}
+
+<!-- balance seats -->
+if(clas=="first" || 
+clas=="economy"  || clas=="premium"  || clas=="business" && flightno=="100" ||
+flightno=="200" ||
+flightno=="300" ||
+flightno=="400" ||
+flightno=="500"){
+totalseats= totalseats-ticket;
+console.log("Total balance seats: "+ totalseats);
+}
+
+<!-- each class+ each flightno seats subject to tickets sold out--> 
+if(clas=='first' && flightno=='100' && firstseats100==0 || clas=='first' && flightno=='200' &&  firstseats200==0 ||
+clas=='first' && flightno=='300' &&  firstseats300==0 ||   
+clas=='first' && flightno=='400' &&
+firstseats400==0 ||   
+clas=='first' && flightno=='500' &&
+firstseats500==0){
+alert("All " + clas + "" + " class tickets sold  out on:  "+ datts + " "+"for flight no: "+ flightno);
+flightnumb[i]=flightno;
+datsz[i]=datts;
+console.log("booked class & dates: " + flightnumb[i]+datsz[i] + clas);
+document.getElementById("clas1").disabled="false";
+document.getElementById("seating").disabled="false";
+document.getElementById("seats").innerHTML+="**" +  "Booked Class, Flight & Dates: " + flightnumb[i]+"**"+ datsz[i] +"**" + clas + "<hr>";
+} else if(clas=='economy' && flightno=='100' && ecoseats100==0 || clas=='economy' && flightno=='200' && ecoseats200==0 || clas=='economy' && flightno=='300' && ecoseats300==0 || clas=='economy' && flightno=='400' && ecoseats400==0 || clas=='economy' && flightno=='500' && ecoseats500==0){
+alert("All " + clas + "" + " class tickets sold  out on:  "+ datts + " "+"for flight no: "+ flightno);
+flightnumb[i]=flightno;
+datsz[i]=datts;
+console.log("booked class & dates: " + flightnumb[i]+datsz[i] + clas);
+document.getElementById("clas1").disabled="false";
+document.getElementById("seating").disabled="false";
+document.getElementById("seats").innerHTML+= "**" +  "Booked Class, Flight & Dates: " + flightnumb[i]+"**"+ datsz[i] +"**" + clas + "<hr>";
+}else if(clas=='premium' && flightno=='100' && premiumseats100==0 
+|| clas=='premium' && flightno=='200' && premiumseats200==0 || clas=='premium' && flightno=='300' && premiumseats300==0    
+|| clas=='premium' && flightno=='400'
+&& premiumseats400==0 
+|| clas=='premium' && flightno=='500'
+&& premiumseats500==0){
+alert("All " + clas + "" + " class tickets sold  out on:  "+ datts + " "+"for flight no: "+ flightno);
+flightnumb[i]=flightno;
+datsz[i]=datts;
+console.log("booked class & dates: " + flightnumb[i]+datsz[i] + clas);
+document.getElementById("clas1").disabled="false";
+document.getElementById("seating").disabled="false";
+document.getElementById("seats").innerHTML+="**" +  "Booked Class, Flight & Dates: " + flightnumb[i]+"**"+ datsz[i] +"**" + clas +
+"<hr>";
+}else if
+(clas=='business' && flightno=='100'
+&& busiseats100==0 || clas=='business' && flightno=='200'
+&& busiseats200==0 || clas=='business' && flightno=='300'
+&& busiseats300==0 || clas=='business' && flightno=='400'
+&& busiseats400==0 || clas=='business' && flightno=='500'
+&& busiseats500==0){
+alert("All " + clas + "" + " class tickets sold  out on:  "+ datts + " "+"for flight no: "+ flightno);
+flightnumb[i]=flightno;
+datsz[i]=datts;
+console.log("booked class & dates: " + flightnumb[i]+datsz[i] + clas);
+document.getElementById("clas1").disabled="false";
+document.getElementById("seating").disabled="false";
+document.getElementById("seats").innerHTML+= "**" +    
+ clasarr[i] + flightno +"<hr>";
+}
+
+if (totalseats<=25){
+totalseats=totalseats+40;
+}
+
+<!--all class sold out seats on one flightno-->
+if (firstseats100==0 && ecoseats100==0  && premiumseats100==0  && busiseats100==0 && flightno==100){
+alert("Sorry! All class seat tickets sold out for flight: "+ flightno + " on date: "+ datts);
+document.getElementById("clas1").disabled="false";
+document.getElementById("seating").disabled="false";
+flightnumb[i]+=flightno;
+datsz[i]+=datts;
+bookedflights[i]+= flightnumb[i]+datsz[i];
+alert("booked flights/dates: " + bookedflights[i]);
+document.getElementById("seats").innerHTML+= "**" + "All Class Sold Out: "+   
+bookedflights[i]+"<hr>";
+}else if (firstseats200==0 && ecoseats200==0  && premiumseats200==0  && busiseats200==0 && flightno==200){
+alert("Sorry! All class seat tickets sold out for flight: "+ flightno + " on date: "+ datts);
+flightnumb[i]+=flightno;
+datsz[i]+=datts;
+document.getElementById("clas1", "tickets","dats", "flights", "seating").disabled="false";
+document.getElementById("seating").disabled="false";
+bookedflights[i]+= flightnumb[i]+datsz[i];
+alert("booked flights/dates: " + bookedflights[i]);
+document.getElementById("seats").innerHTML+= "**" +   "All Class Sold Out: "+   
+bookedflights[i] + "<hr>";
+}else if(firstseats300==0 && ecoseats300==0 && premiumseats300==0 && busiseats300==0 && flightno==300){
+alert("Sorry! All class seat tickets sold out for flight: "+ flightno + " on date: "+ datts);
+flightnumb[i]+=flightno;
+datsz[i]+=datts;
+document.getElementById("clas1", "tickets","dats", "flights", "seating").disabled="false";
+document.getElementById("seating").disabled="false";
+bookedflights[i]+= flightnumb[i]+datsz[i];
+alert("booked flights/dates: " + bookedflights[i]);
+document.getElementById("seats").innerHTML+= "**" +  "All Class Sold Out: "+   
+bookedflights[i] + "<hr>";
+}else
+if(firstseats400==0 && ecoseats400==0 && premiumseats400==0 && busiseats400==0 && flightno==400){
+alert("Sorry! All class seat tickets sold out for flight: "+ flightno + " on date: "+ datts);
+flightnumb[i]+=flightno;
+datsz[i]+=datts;
+document.getElementById("clas1", "tickets","dats", "flights", "seating").disabled="false";
+document.getElementById("seating").disabled="false";
+bookedflights[i]+= flightnumb[i]+datsz[i];
+alert("booked flights/dates: " + bookedflights[i]);
+document.getElementById("seats").innerHTML+= "**" + "All Class Sold Out: "+    
+bookedflights[i]+ "<hr>";
+}else if(firstseats500==0 && ecoseats500==0 && premiumseats500==0 && busiseats500==0 && flightno==500){
+alert("Sorry! All class seat tickets sold out for flight: "+ flightno + " on date: "+ datts);
+flightnumb[i]+=flightno;
+datsz[i]+=datts;
+document.getElementById("clas1", "tickets","dats", "flights", "seating").disabled="false";
+document.getElementById("seating").disabled="false";
+bookedflights[i]+= flightnumb[i]+datsz[i];
+alert("booked flights/dates: " + bookedflights[i]);
+document.getElementById("seats").innerHTML+= "**" + "All Class Sold Out: "+    
+bookedflights[i] + "<hr>";
+} 
+
+<!--tickets exceeding each class seats --><!--all class/ flights -100-->
+if (firstseats100 < 0 && flightno=="100" ||
+firstseats100 < 0 && flightno=="200"
+||
+firstseats100 < 0 && flightno=="300"
+||
+firstseats100 < 0 && flightno=="400"
+||
+firstseats100 < 0 && flightno=="500"
+){
+firstseats100=ticket-(-firstseats100);
+console.log("your requested first class seats exceeded available seat class, sorry");
+} else if (ecoseats100 < 0 && flightno=="100"
+|| ecoseats100 < 0 && flightno=="200"
+|| ecoseats100 < 0 && flightno=="300"
+|| ecoseats100 < 0 && flightno=="400"
+|| ecoseats100 < 0 && flightno=="500"){
+ecoseats100=ticket-(-ecoseats100);
+console.log("your requested economy class seats exceeded available seat class, sorry");
+} else if (premiumseats100 < 0 && flightno=="100"
+|| premiumseats100 < 0 && flightno=="200"
+|| premiumseats100 < 0 && flightno=="300"
+|| premiumseats100 < 0 && flightno=="400"
+|| premiumseats100 < 0 && flightno=="500"){
+premiumseats100=ticket-(-premiumseats100);
+console.log("your requested premium class seats exceeded available seat class, sorry");
+} else if (busiseats100 < 0 && flightno=="100"
+|| busiseats100 < 0 && flightno=="200"
+|| busiseats100 < 0 && flightno=="300"
+|| busiseats100 < 0 && flightno=="400"
+|| busiseats100 < 0 && flightno=="500"){
+busiseats100=ticket-(-busiseats100);
+console.log("your requested business class seats exceeded available seat class, sorry");
+}
+<!--all class/ flights-200-->
+if (firstseats200 < 0 && flightno=="100" ||
+firstseats200 < 0 && flightno=="200"
+||
+firstseats200 < 0 && flightno=="300"
+||
+firstseats200 < 0 && flightno=="400"
+||
+firstseats200 < 0 && flightno=="500"
+){
+firstseats200=ticket-(-firstseats200);
+console.log("your requested first class seats exceeded available seat class, sorry");
+} else if (ecoseats200 < 0 && flightno=="100"
+|| ecoseats200 < 0 && flightno=="200"
+|| ecoseats200 < 0 && flightno=="300"
+|| ecoseats200 < 0 && flightno=="400"
+|| ecoseats200 < 0 && flightno=="500"){
+ecoseats200=ticket-(-ecoseats200);
+console.log("your requested economy class seats exceeded available seat class, sorry");
+} else if (premiumseats200 < 0 && flightno=="100"
+|| premiumseats200 < 0 && flightno=="200"
+|| premiumseats200 < 0 && flightno=="300"
+|| premiumseats200 < 0 && flightno=="400"
+|| premiumseats200 < 0 && flightno=="500"){
+premiumseats200=ticket-(-premiumseats200);
+console.log("your requested premium class seats exceeded available seat class, sorry");
+} else if (busiseats200 < 0 && flightno=="100"
+|| busiseats200 < 0 && flightno=="200"
+|| busiseats200 < 0 && flightno=="300"
+|| busiseats200 < 0 && flightno=="400"
+|| busiseats200 < 0 && flightno=="500"){
+busiseats200=ticket-(-busiseats200);
+console.log("your requested business class seats exceeded available seat class, sorry");
+}
+
+if (firstseats300 < 0 && flightno=="100" ||
+firstseats300 < 0 && flightno=="200"
+||
+firstseats300 < 0 && flightno=="300"
+||
+firstseats300 < 0 && flightno=="400"
+||
+firstseats300 < 0 && flightno=="500"
+){
+firstseats300=ticket-(-firstseats300);
+console.log("your requested first class seats exceeded available seat class, sorry");
+} else if (ecoseats300 < 0 && flightno=="100"
+|| ecoseats300 < 0 && flightno=="200"
+|| ecoseats300 < 0 && flightno=="300"
+|| ecoseats300 < 0 && flightno=="400"
+|| ecoseats300 < 0 && flightno=="500"){
+ecoseats300=ticket-(-ecoseats300);
+console.log("your requested economy class seats exceeded available seat class, sorry");
+} else if (premiumseats300 < 0 && flightno=="100"
+|| premiumseats300 < 0 && flightno=="200"
+|| premiumseats300 < 0 && flightno=="300"
+|| premiumseats300 < 0 && flightno=="400"
+|| premiumseats300 < 0 && flightno=="500"){
+premiumseats300=ticket-(-premiumseats300);
+console.log("your requested premium class seats exceeded available seat class, sorry");
+} else if (busiseats300 < 0 && flightno=="100"
+|| busiseats300 < 0 && flightno=="200"
+|| busiseats300 < 0 && flightno=="300"
+|| busiseats300 < 0 && flightno=="400"
+|| busiseats300 < 0 && flightno=="500"){
+busiseats300=ticket-(-busiseats300);
+console.log("your requested business class seats exceeded available seat class, sorry");
+}
+
+if (firstseats400 < 0 && flightno=="100" ||
+firstseats400 < 0 && flightno=="200"
+||
+firstseats400 < 0 && flightno=="300"
+||
+firstseats400 < 0 && flightno=="400"
+||
+firstseats400 < 0 && flightno=="500"
+){
+firstseats400=ticket-(-firstseats400);
+console.log("your requested first class seats exceeded available seat class, sorry");
+} else if (ecoseats400 < 0 && flightno=="100"
+|| ecoseats400 < 0 && flightno=="200"
+|| ecoseats400 < 0 && flightno=="300"
+|| ecoseats400 < 0 && flightno=="400"
+|| ecoseats400 < 0 && flightno=="500"){
+ecoseats400=ticket-(-ecoseats400);
+console.log("your requested economy class seats exceeded available seat class, sorry");
+} else if (premiumseats400 < 0 && flightno=="100"
+|| premiumseats400 < 0 && flightno=="200"
+|| premiumseats400 < 0 && flightno=="300"
+|| premiumseats400 < 0 && flightno=="400"
+|| premiumseats400 < 0 && flightno=="500"){
+premiumseats400=ticket-(-premiumseats400);
+console.log("your requested premium class seats exceeded available seat class, sorry");
+} else if (busiseats400 < 0 && flightno=="100"
+|| busiseats400 < 0 && flightno=="200"
+|| busiseats400 < 0 && flightno=="300"
+|| busiseats400 < 0 && flightno=="400"
+|| busiseats400 < 0 && flightno=="500"){
+busiseats400=ticket-(-busiseats400);
+console.log("your requested business class seats exceeded available seat class, sorry");
+}
+
+if (firstseats500 < 0 && flightno=="100" ||
+firstseats500 < 0 && flightno=="200"
+||
+firstseats500 < 0 && flightno=="300"
+||
+firstseats500 < 0 && flightno=="400"
+||
+firstseats500 < 0 && flightno=="500"
+){
+firstseats500=ticket-(-firstseats500);
+console.log("your requested first class seats exceeded available seat class, sorry");
+} else if (ecoseats500 < 0 && flightno=="100"
+|| ecoseats500 < 0 && flightno=="200"
+|| ecoseats500 < 0 && flightno=="300"
+|| ecoseats500 < 0 && flightno=="400"
+|| ecoseats500 < 0 && flightno=="500"){
+ecoseats500=ticket-(-ecoseats500);
+console.log("your requested economy class seats exceeded available seat class, sorry");
+} else if (premiumseats500 < 0 && flightno=="100"
+|| premiumseats500 < 0 && flightno=="200"
+|| premiumseats500 < 0 && flightno=="300"
+|| premiumseats500 < 0 && flightno=="400"
+|| premiumseats500 < 0 && flightno=="500"){
+premiumseats500=ticket-(-premiumseats100);
+console.log("your requested premium class seats exceeded available seat class, sorry");
+} else if (busiseats500 < 0 && flightno=="100"
+|| busiseats500 < 0 && flightno=="200"
+|| busiseats500 < 0 && flightno=="300"
+|| busiseats500 < 0 && flightno=="400"
+|| busiseats500 < 0 && flightno=="500"){
+busiseats500=ticket-(-busiseats500);
+console.log("your requested business class seats exceeded available seat class, sorry");
+}
+storedat[i]+=
+clas+datts+flightno+destinations+totalairfare+luggage;
+console.log(storedat[i]);
+totaldaily[i]= totaldailysales;
+console.log(totaldaily[i]);
+datts="";
+
+}
+totalairfare="";
+}
+</script>
+
+<script>
+/*Booking Ref Generator*/ 
+function gentoken()
+{
+var bookstore=[], bookdate, bookbtn, bookings;
+var x ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var y = x.length;
+var i, txt ="";
+for(i=0; i < 7; i++){
+txt+= x[Math.floor(Math.random() * y)]; 
+}
+
+document.getElementById("gen").disabled="false"; bookdate=document.querySelector('#air');
+var bookbtn=document.querySelector('#gen');
+bookings= new FormData(bookdate);
+bookings.FormData.append(txt, value);
+bookstore[i]=txt+bookings;
+console.log(bookstore[i]);
+}
+
+/*Ticket Generator*/
+function tick()
+{
+var tktstore=[];
+var tkt=
+'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var nmbr= tkt.length;
+var wow, ping="";
+for(wow=0; wow <= 6; wow++){
+ping+= tkt[Math.floor(Math.random() * nmbr)]; 
+}
+tktstore[i]=ping;
+console.log(tktstore[i]);
+document.getElementById("tktnmbr").disabled="false";
+var ticketnumber=document.querySelector('#air');
+var tktbtn=document.querySelector('#tktnmbr');
+var tickform= new FormData(ticketnumber);
+tickform.FormData.append(ping, value);
+}
+
+/*Ticket Token Generator*/
+function tickettoken()
+{
+var tkttokstore=[];
+var tkttoken=
+'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var token= tkttoken.length;
+var zing, tong="";
+for(zing=0; zing <= 7; zing++)
+{
+tong+= tkttoken[Math.floor(Math.random() * token)]; 
+tkttokstore[i]=tong;
+console.log(tkttokstore);
+document.getElementById("generator").disabled="false";
+}
+var tickettokens=document.querySelector('#air');
+var tkttokenbtn=document.querySelector('#generator');
+var tkttokenform= new FormData(tickettokens);
+tkttokenform.FormData.append(tong, value); 
+}
+
+function seat1(){
+var custname,gender, pp, pptone, ppttwo, pptthree, pptfour, pptfive, occup, baby1, babies1, foodies, customerstore=[];
+
+/*Capture all name value data & save to server*/
+
+var formid= document.querySelector("#air");
+var formsub= document.querySelectorAll("#seat", "#seating", "#tktnmbr", "#ticketdisp", "#generator", "#ticketfare");
+var msg= document.querySelector("#mess");
+
+var paybill= new FormData(formid);
+
+formsub.addEventListener("click", (e)=>{
+e.preventDefault(); 
+payment();
+});
+
+const payment= async()=>{
+try{
+const response= await fetch("customervalidity.php",{
+method: 'POST',
+body: new FormData(formid),
+});
+const result= await response.json();
+
+showMessage(result.message, response.Status== 200 ? 'success':'error');
+}catch(error){
+showMessage(error.message, 'error');
+ }
+};
+
+const showMessage= 
+(message, type ='success')=>{
+mess.innerHTML=
+`<div class= "alert alert-${type}">
+${message}
+</div>`;
+}
+
+/*displaying all data names-values*/const disp=[... FormData.entries()];
+console.log("output: "+disp);
+ custname=FormData.get(custo, value);
+gender=FormData.get(gendo, value);
+pp=FormData.get(ppt, value);
+pptone=FormData.get(ppt1, value);
+ppttwo=FormData.get(ppt2, value);
+pptthree=FormData.get(ppt3, value);
+pptfour=FormData.get(ppt4, value);
+pptfive=FormData.get(ppt5, value);
+occup=FormData.get(occupy, value);
+baby1=FormData.get(babywt, value);
+babies1=FormData.get(babies, value);
+foodies=FormData.get(foody, value);
+customerstore[i]+=custname+gender+pp+pptone+ppttwo+pptthree+pptfour+pptfive+occup+baby1+babies1+foodies;
+console.log(customerstore[i]);
+}
+</script>
+
+<script>
+function airport(){
+/*created db+validation 2 credit db*/
+
+var aircredit= document.querySelector("#expenses");
+var airpay= document.querySelector("#pay1");
+var messenger= document.querySelector("#airmess");
+
+airpay.addEventListener("click", function(e)=>{
+e.preventDefault();
+pays();
+});
+
+const pays= async()=>{
+try{
+const responses= await fetch("creditvalidity.php", './customer.js', './creditdb.js'{
+method: 'POST',
+body: new FormData(aircredit),
+});
+const results= await responses.json();
+
+showMessage(results.message, responses.Status== 200 ? 'success':'error');
+}catch(error){
+showMessage(error.message, 'error');
+ }
+};
+
+const showMessage= 
+(message, type ='success')=>{
+airmess.innerHTML=
+`<div class= "alert alert-${type}">
+${message}
+</div>`;
+}
+})
+
+var airdtls= FormData.getAll(aircredit, value);
+</script>
+
+<script>
+function forward()
+{
+window.history.forward();
+}
+
+function backward()
+{
+window.history.back();
+}
+</script>
+
+<a href="tel: +1234567890"><b>Call via Skype</b></a><a href="https://github.com/cool31/cool31/main/financial/wa.link/ragsdj"><b>Click to chat</b></a>
+</body>
+</html>
