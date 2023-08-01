@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{
+box-sizing: border-box;
+}
+
+#customers{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+ 
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 25px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr {
+    height: 30px;
+    vertical-align: bottom;
+}
+</style>
+</head>
+
+<body>
+<table id="customers">
+<tr>
+<th>Sl No.</th>
+<th>Particulars</th>
+<th>Qty</th>
+<th>Amount</th>
+<th>Net Wt</th>
+</tr>
+<br>
+
+</table>
+<input type="number" id="numb"><button onClick="pro()">Submit</button>
+
+<script>
+function pro(){
+var x= document.getElementById('numb');
+console.log(window.print(x.value));
+}
+</script>
+</body>
+</html>
