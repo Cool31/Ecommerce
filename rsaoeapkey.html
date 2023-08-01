@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RSA OAEP KEY GENERATOR</title>
+</head>
+
+<body>
+<script>
+/*convert arrayBuffer to Base64*/
+function x(arrayBuffer){    
+var t = new Uint8Array(arrayBuffer);
+var x = ' ';
+for(let i =0; i < t.bytelength; i++){
+ x += t.fromCharCode(arrayBuffer[i]);
+ }
+ var h = window.btoa(x,64);
+return h;  
+}
+
+
+function y(str){
+var m = '';
+while(str.length > 0){
+m += str.substring(0,64) +'\n';
+str = str.substring(64);
+  }
+return m;
+}
+
+function toPem(privatekey){
+var n = x(y(privatekey));
+var w = "BEGIN PRIVATE KEY" + privatekey + "END PRIVATE KEY";
+return w;
+}
+
+/*generating pvt key pair*/
+window.crypto.subtle.generateKey(
+{
+name: "RSA-OAEP",
+modulusLength: 2048,
+publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+hash: {name: "SHA-256"}
+}, true,
+["encrypt", "decrypt"]).then(function(keypair){
+window.crypto.subtle.exportKey(
+"pkcs8",
+keypair.privatekey).then(function(expoortPrivatekey){
+var pem = toPem(exportPrivatekey);
+console.log(pem);
+}).catch(function (err){
+console.log(err);
+  });
+});
+
+/*converting pem key to crypto key + above */
+function j(str){
+var ty = str.replace('\n', ' ');
+}
+
+/*base64 to arrayBuffer*/
+function tu(b64){
+var bytestring = window.atob(b64);
+var bytearray = new Uint8Array(bytestring.length);
+for(i = 0; i < bytrstring.length; i++){
+ bytearray[i]= bytestring.codeCharAt(i);
+ }
+ return bytearray;
+}
+
+function pemtoarrayBuffer(pem){
+var b64l = j(pem);
+var bprefix = b64l.replace("--BEGIN PRIVATE KEY--", " ");
+var bsuffix = bprefix.replace("--END PRIVATE KEY--", "");
+return tu(bsuffix);
+}
+
+window.crypto.subtle.importKey(
+{
+'pkcs8',
+pemtoarraybuffer(yourgeneratedprivatekey),
+{
+name:'RSA-OAEP',
+hash:{name:'SHA-256'}
+}, true,
+["decrypt"]).then(function(importedprivatekey){
+console.log(importedprivatekey)
+}).catch(function (err){
+console.log(err)};
+</script>  
+</body>
+</html>
