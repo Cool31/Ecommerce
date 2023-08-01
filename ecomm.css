@@ -1,0 +1,152 @@
+<style>
+#myta tr, td{
+border: 10px solid yellow;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 5px;
+padding: 2px;
+border-collapse: collapse;
+font-size: 23px;
+background-color: green;
+color: white;
+text-align: left;
+column-gap:10px;
+row-gap:20px;
+}
+
+#myta tr, td, button{
+background-color: blue;
+display: inline-block;
+color:white;
+}
+
+input{
+background-color: green;
+color: white;
+width:260px;
+}
+
+/* For mobile phones: */
+
+[class*="col-"]
+{
+ width: 100%;
+ }
+
+@media only screen and (min-width: 600px)
+{
+/* For tablets: */
+.col-s-1 {
+width: 8.33%;
+}
+.col-s-2 {
+width: 16.66%;
+}
+.col-s-3 {width: 25%;}
+.col-s-4 {
+width: 33.33%;
+}
+.col-s-5 {
+width: 41.66%;
+}
+.col-s-6 {width: 50%;}
+.col-s-7 {width: 58.33%;
+}
+.col-s-8 {width: 66.66%;
+}
+.col-s-9 {width: 75%;
+}
+.col-s-10 {
+width: 83.33%;
+}
+.col-s-11 {width: 91.66%;
+}
+.col-s-12 {
+width: 100%;}
+}
+
+@media only screen and (min-width: 768px)
+{/* For desktop: */
+.col-1 {
+width: 8.33%;
+}
+.col-2 {
+width: 16.66%;
+}
+.col-3 {width: 25%;
+}
+.col-4 {
+width: 33.33%;
+}
+.col-5 {
+width: 41.66%;
+}
+.col-6 {width: 50%;
+}
+.col-7 {
+width: 58.33%;
+}
+.col-8 {width: 66.66%;
+}
+.col-9 {width: 75%;
+}
+.col-10 {
+width: 83.33%;
+}
+.col-11 {width: 91.66%;
+}
+.col-12 {width: 100%;
+}
+}
+
+#expenses{
+width:20rem;
+position:relative;
+left:10px;
+border: 20px solid red;
+display: inline-block;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 20px;
+border-collapse: collapse; 
+font-size: 1.10rem;
+background-color: green;
+color: white;
+text-align: center;
+}
+
+video{
+height:160px; width:320px; border:5px solid grey;
+background-color:red;
+}
+
+.flex-container, .flex-item1{ 
+direction:ltr;  
+display:block; 
+width: 500px;
+height: 270px;   background-color: lightgrey;
+
+}
+
+.flex-item{  
+width:300px; 
+display: inline; 
+padding:20px;  background-color: brown;
+color: white;
+font-size: 12px;
+vertical-align:bottom;
+column-count:4;
+column-gap:40px;
+}
+
+#dist{
+width: 440px;
+height: 300px;
+border: 10px solid red;
+display: inline-block;
+font-size:23px;
+overflow: scroll;
+vertical-align:bottom;
+}
+</style>
+</head>
