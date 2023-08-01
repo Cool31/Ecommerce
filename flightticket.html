@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Flight Reservation
+ System</title>
+<meta name="viewport" content="width=device-width initial-scale =1">
+ 
+<!--<?=
+if(!isset($_SERVER['PHP_AUTH_USER'])){
+header('WWW-Authenticare: Basic realm ="MyRealm"');
+header('HTTP/1.0, 401 Unauthorized');
+exit;
+}
+echo "<p> Hello $_SERVER['PHP_AUTH_USER'] </p>";
+$user = $_SERVER['PHP_AUTH_USER'];
+echo "<p> You entered $_SERVER['PHP_AUTH_PW'] as your password</p>";
+$pwd = $_SERVER['PHP_AUTH_PW'];
+?>-->
+
+<link rel="stylesheet" href="https://w3schools/w3css/4/w3.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://kit.fontawesome.com/a86d3779f6.js" crossorigin="anonmyous"></script>
+
+<script src ="https://github.com/cool31/cool31/main/financial/customervalidity.php"></script>
+
+<script src ="https://github.com/cool31/cool31/main/financial/threecurrencyconvert.js"></script>
+    
+</script src ="
+https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+*{
+box-sizing: border-box;
+}
+
+#myta tr, td{
+border: 10px solid yellow;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 3px;
+padding: 2px;
+border-collapse: collapse;
+font-size: 13px;
+background-color: green;
+color: orange;
+value-align: left;
+column-gap:10px;
+row-gap:30px;
+}
+
+#myta tr, td, button{
+background-color: blue;
+display: inline-block;
+}
+
+table{
+border:2px solid black;
+padding: 20px;
+width: 38rem;
+height: 15rem;
+display: inline-block;
+outline-style: outset;
+outline-color: invert;
+border-spacing: 20px;
+border-collapse: collapse;
+font-size: 1.10rem;
+background-color: green;
+color: orange;
+text-align: center;
+overflow: scroll;
+reset: horizontal;
+}
+
+#tktprin th, tr, #returnflight th, tr{
+border:10px solid black;
+padding: 24px;
+}
+
+p{
+width: 180px;
+height: 140px;
+border: 2px solid black;
+position: absolute;
+top:550px;
+right:-260px;
+}
+
+/* For mobile phones: */
+
+[class*="col-"]
+{
+ width: 100%;
+ }
+
+@media only screen and (min-width: 600px)
+{
+/* For tablets: */
+.col-s-1 {
+width: 8.33%;
+}
+.col-s-2 {
+width: 16.66%;
+}
+.col-s-3 {width: 25%;}
+.col-s-4 {
+width: 33.33%;
+}
+.col-s-5 {
+width: 41.66%;
+}
+.col-s-6 {width: 50%;}
+.col-s-7 {width: 58.33%;
+}
+.col-s-8 {width: 66.66%;
+}
+.col-s-9 {width: 75%;
+}
+.col-s-10 {
+width: 83.33%;
+}
+.col-s-11 {width: 91.66%;
+}
+.col-s-12 {
+width: 100%;}
+}
+
+@media only screen and (min-width: 768px)
+{/* For desktop: */
+.col-1 {
+width: 8.33%;
+}
+.col-2 {
+width: 16.66%;
+}
+.col-3 {width: 25%;
+}
+.col-4 {
+width: 33.33%;
+}
+.col-5 {
+width: 41.66%;
+}
+.col-6 {width: 50%;
+}
+.col-7 {
+width: 58.33%;
+}
+.col-8 {width: 66.66%;
+}
+.col-9 {width: 75%;
+}
+.col-10 {
+width: 83.33%;
+}
+.col-11 {width: 91.66%;
+}
+.col-12 {width: 100%;
+}
+}
+</style>
+</head>
+
+<body>
+<a href="https://github.com/cool31/cool31/main/financial/threecurrencyconvert.html#three">Currency Converter</a><br/>
+
+<input type="button" value="Next" onclick="forward()" style="color:red;"/>
+<input type="button" value="Previous" onclick="backward()" style="color:red;"/>
+
+<form class="air" action=" "
+method="post" accept-charset ="UTF-8" enctype="multipart/form-data">
+<fieldset>
+<legend><b>QATAR AIRWAYS - FLIGHT TICKET RESERVATION SYSTEM</b></legend>
+<table id = "myta">
+<tr>
+<td>
+<b><i>Customer Name:</i></b>
+<input type="text" name= "reservation[]"  id="cust" value=""></td>
+
+<td><b><i>Nationality:</i></b><input type="text" id="nation" name = "reservation[]" value=""/></td>
+
+<td>
+<b><i>Gender:</i></b>
+<input type = "radio" id="gend" name= "reservation[]"  value = "Male">Male
+<input type = "radio" id="gend" name= "reservation[]"  value = "Female">Female
+<input type = "radio" id="gend" name= "reservation[]"  value = "Transgender">Transgender
+
+</td>
+<td><b><i>DOB:</i></b><input type="date" id="birth" name = "reservation[]"/></td>
+
+<td><b><i>Mobile Number:</i></b><input type="number" name = "reservation[]" id="mob"/></td>
+
+<td><b><i>E-mail ID:</i></b><input type ="email" id="ema" name = "reservation[]"  value="" /></td>
+
+<td><b><i>Photo ID:</i></b><input type="file" id="photo" name = "reservation[ ]"  value="scan pp photo " /></td>
+
+<td>Occupation:<select id = "custoccup" name = "reservation[]">
+<option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "doctor">Medicine</option>
+<option value="protection">Airlines Safety Dept</option>
+option value="others">Other Occupation</option>
+</select></td>
+
+<td>Reason For Travel:<select id ="Reason" name = "reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "Job">Job</option>
+<option value="visitvisa">Visit Visa</option>
+<option value="treatment">Medical Treatment</option>
+<option value="Official">Official</option>
+<option value="immigration">Immigration</option>
+<option value="Education">Education</option>
+<option value="Funeral">Funeral</option>
+<option value="other">Others</option>
+</select></td>
+
+<td><b><i>PP Number:</i></b><input type = "text" id="pp" name= "reservation[]" value=" "/>
+</td>
+
+<td><b><i>PP Validity:</i></b><input type = "date" id="dap" name= "reservation[]"/>
+</td>
+
+<td><b><i>Customer Id Status:</i></b><input id="ban" name= "reservation[]"   value="ex: mole on neck"/>
+</td>
+
+<td>Family Travel:<select id = "family" name = "reservation[]">
+<option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "infant < 2 yrs">Infant</option>
+<option value="no infant">No infant</option>
+<option value="kids + infant">Kids + Infant</option>
+<option value="mom,dad+kids">Family</option>
+<option value="mom,dad">No kids</option>
+<option value="child">Children</option>
+<option value="maid + family">Maid</option>
+<option value="relative">Relatives & Family</option>
+<option value="indl"> Indl & Others</option>
+<option value="others">Others</option>
+<option value="none">Indl</option>
+
+<td><b><i>Ist Member PP Number:</i></b><input type = "text" id="pp" name= "reservation[]" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="dap" name= "reservation[]"/>
+</td>
+
+<td><b><i>IInd Member PP Number:</i></b><input type = "text" id="pp" name= "reservation[]" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="dap" name= "reservation[]"/>
+</td>
+
+<td><b><i>3rd PP Number:</i></b><input type = "text" id="pp" name= "reservation[]" value=" "/><br>
+<b><i>PP Validity:</i></b><input type = "date" id="dap" name= "reservation[]"/>
+</td>
+</select>
+</td>
+
+<td><b><i>Customer/Other Members Health Status:</i></b><select id="van" name= "reservation[]"/>
+<option value = "not selected" disabled selected>
+Please Select</option>  
+<option value ="Healthy">Fit to Travel</option>
+<option value ="unfit">Certified to Travel on medical/compassionate grounds</option>
+</td>
+</select></td>
+<td><b><i>Immigration Status:</i></b><select id="dan" name = "reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="permitted">Normally Applicable</option>
+<option value="permitted">Not Applicable</option></select>
+</td>
+
+<fieldset>
+<legend>SEAT AVAILABILITY STATUS</legend>
+<td><b><i>Booking Date:</i></b><input type="date" name="reservation[]" id="books">
+<td><b><i>Booking Reference Number & Ticket Date:</i></b><input type="date" name="reservation[]" id="booked">
+<button id="gen" onclick="gentoken()" style="color: orange;">BOOKING REF NO & DATE ** ONE-WAY</button>
+</td>
+
+<td><b><i>Flight Number:</i></b>
+<select id = "flight" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="Q406" >Q406</option>
+<option value="Q410" >Q410</option>  
+<option value="Q415" >Q415</option>  
+
+<input type="checkbox" value="A" name="reservation[]" id =
+"seatfavor">A-window Seat  
+<input type="checkbox" value="C" name="reservation[]" id =
+"seatfavor">C-
+Middle Seat  
+<input type="checkbox" value="D" name="reservation[]" id =
+"seatfavor">D-
+Side Seat  
+<input type="checkbox" value="F" id =
+"seatfavor" name="reservation[]">F-
+Window Seat 
+</select> 
+</td>
+
+<td><b><i>Seating Chair:</i></b><Select id="tktprice" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+ <option value="1800">First</option>
+ <option value="1200">Economy</option>
+ <option value="1400">Premium</option>
+ <option value="1600">Business</option> 
+</Select>   
+</td><br>
+<td>
+<b><i>Discount(if any):</i></b>   <input type="number" name="reservation[]" value=""><select id ="currency2"  name="reservation[]" style="background-color:orange;">
+<option value = "0" disabled selected>
+Please Select</option>
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+<option value= "QAR">Qatari Rial </option>
+<option value= "CLP">Yuan Renminbi</option>
+<option value= "HKD">Hongkong Dollar</option>
+<option value= "IDR">Iranian Rial</option>
+<option value= "SAR">Saudi Rial</option>
+<option value= "AED">UAE Dirham</option>
+<option value= "KWD">kuwati Dinar</option>
+<option value= "OMR">Rial Omani</option>
+</select>
+<button id="pay1" onclick ="extend()" style="color: orange;">Currency Converter</button>
+<hr>
+</td>
+<br>
+<td><b><i>Member or Members in Travel:</i></b><input type="number" id="tan" name = "reservation[]" placeholder = "Enter total members in travel "  min="1" max="5"/></td>
+<br>
+<td><b><i>Ticket Price (use only if prices changed):</i></b><br>First Class Ticket Price:<input type="number" id = "price" placeholder = "Enter latest ticket price" name="reservation[]">
+<hr>
+Economy Ticket Price:<input type="number" id="priced" placeholder = "Enter Economy class ticket price" name="reservation[]"><select id ="currency1"  name="reservation[]" style="background-color:orange;">
+<option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+<option value= "QAR">Qatari Rial </option>
+<option value= "CLP">Yuan Renminbi</option>
+<option value= "HKD">Hongkong Dollar</option>
+<option value= "IDR">Iranian Rial</option>
+<option value= "SAR">Saudi Rial</option>
+<option value= "AED">UAE Dirham</option>
+<option value= "KWD">kuwati Dinar</option>
+<option value= "OMR">Rial Omani</option>
+
+</select>
+<button id="pay1" onclick ="extend()" style="color: orange;">Currency Converter</button>
+<hr>
+Economy Premium Ticket Price:<input type="number" id="price1" placeholder = "Enter Economy Premium class ticket price" name="reservation[]">
+<hr>
+Business Ticket Price:<input type="number" id="price2" placeholder = "Enter business class ticket price" name="reservation[]" ><hr>
+
+<td><b><i>Ticket Price (use only if taxes changed):</i></b><br>
+Airport Tax:<input type="number" id= "currenttax" name="reservation[]"><br>
+
+<select id = "currenttktprice"
+name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= " " >Current First Class</option>
+<option value ="">
+Current Economy Class</option>
+<option value ="">
+Current Economy Premium Class</option>
+<option value ="">
+Current Business Class</option>
+</select><button id="seat" onclick="seat1()" style="color: grey;">LATEST TKT PRICE</button>
+</td>
+</fieldset>
+
+<td><b><i>Seat Availability:</i></b><button id="seat" onclick="seat1()" name="reservation[]"   style="color: orange;">SEAT NUMBER</button>
+</td>
+
+<td><b><i>Ticket Number:</i></b>
+<button id="tickets" name="reservation[]" onclick=
+"tktnmbr()" style = "color: orange;">TICKET NUMBER</button>
+</td>
+</fieldset>
+
+<td><b><i>DEPARTURE INFORMATION:</i>
+</b><br>
+Destination Country:<input type="text" id="dest" name="reservation[]" placeholder = "Enter Destination country"><br> Departure Date:<input type="date" id ="depar" placeholder = "Enter date"><br>
+Departure Time:<input type ="time" id="tim" placeholder = "enter time">
+</td>
+
+<td><b><i>ARRIVAL INFORMATION:</i>
+</b><br>
+Arrival Country:<input type="text" id="arrival" name="reservation[]" placeholder= "Enter Arrival country"><br>
+Arrival Date:<input type="date" id ="arrdt" placeholder= "Enter date"><br>
+Arrival Time:<input type ="time" id="arrtim"  placeholder = "enter time"> 
+</td>
+
+<td><b><i>Baby Bassinet Seat:</i></b><Select id="babyseat" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+ <option value="11 kg">Baby Wt 11 kg</option>
+ <option value="<11 lbs">Baby Wt Less than 11 lbs</option> 
+<option value="none">No Baby on travel</option> 
+</Select>
+<Select id="babies" ><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "requested">Bassinet Seat - Reqd</option>  
+<option value= "not_reqd">Bassinet Seat - Not Reqd</option>  
+</Select> 
+</td>
+
+<td><b><i>Flight Operation:</i></b>
+<select id ="direction" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="direct">Direct Flight</option>
+<option value="connection">Connection Flight</option>
+</select></td>
+
+<td><b><i>Flight Travel Status:</i></b><select id ="ticket_status" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="confirm">Confirmed Ticket</option>
+<option value="waitlist"> Waitlist</option>
+</select></td>
+
+<td><b><i>Meals:</i></b><select id ="food"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="veg">Veg</option>
+<option value="nonveg">Nonveg</option>
+<option value="not reqd">Not Reqd</option>
+</select></td>
+
+<td><b><i>Luggage Wt:</i></b><select id ="luggage" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="0-30 Kg">30 Kg Max</option>
+<option value="no luggage">No luggage</option>
+<option value="">Above 30 Kg</option>
+<br>
+Excess Wt Above 30 kg:<input type="number" name="reservation[]" id = "permitted"><br>
+Excess Wt Applicable Charges:<input type="number" name="reservation[]" id="amt">
+</select>
+</td>
+
+<td><b><i>Checkin Reporting Time:
+</i></b><select id ="chkin"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="4 hours before flight">4 Hours</option></select>
+Gate:</i></b><select id ="gate" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="Gate 1">Gate 1</option>
+<option value="Gate 2">Gate 2</option>
+</select></td>
+
+<td><b><i>Ticket Issuer:</i></b><select id ="issuer" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="Airlines">Airlines</option>
+<option value="Agent">Travel Agent</option>
+</select>
+</td>
+
+<td><b><i>Mode of Payment:</i></b><select id ="credit" name="reservation[]"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value="
+CC"><a href= "upi://pay?pn=<Name>&pa=<UPI ID>&cu=<Currency Code>">Credit Card</a></option>
+<option value="
+Cash">Pay By Cash</option></select>
+<select id ="currency"  name="reservation[]" style="background-color:orange;"><option value = "not selected" disabled selected>
+Please Select</option>
+<option value= "$">US Dollars</option>
+<option value= "€">Euro</option>
+<option value= "₹">Indian Rupees</option>
+<option value= "¥">Yen</option>
+<option value= "$">AUD</option>
+<option value= "$">CAD</option>
+<option value= "QAR">Qatari Rial </option>
+<option value= "CLP">Yuan Renminbi</option>
+<option value= "HKD">Hongkong Dollar</option>
+<option value= "IDR">Iranian Rial</option>
+<option value= "SAR">Saudi Rial</option>
+<option value= "AED">UAE Dirham</option>
+<option value= "KWD">kuwati Dinar</option>
+<option value= "OMR">Rial Omani</option>
+</select>
+<br>
+<button id="pay1" onclick ="extend()" style="color: orange;">Currency Converter</button><hr>
+<input type="number" id="cashcurrency" name="reservation[]">
+</td>
+
+<tr><td>
+<button onclick="tktflight()" name="reservation[]">VIEW TICKET</style></button>
+</td></tr>
+
+<tr><td>
+<button id="gen" name="reservation[]" onclick=
+"gentoken()" style="color: orange;">SINGLE ONE-TIME USE TOKEN GENERATOR</button></td></tr>
+</fieldset>
+</table>
+</form>
+
+<div class="container">
+ <b>LOGO</b>
+<h1>QATAR AIRWAYS</h1> <h3>FLIGHT TICKET</h3>
+<hr>
+<div class="photo">
+ <p>Customer Photo</p>   
+
+<b>Email Id: qatar@gmail.com</b><br> 
+<b>Phone: 0000</b>
+<b>Emergency No: 1111</b><br>
+<b>Health Dept No:
+ 113</b><br>
+<b>Protection Dept No:
+ 115</b><br>
+<b>Immigration Helpline: 135</b><br> 
+<b>Complaints No: 345</b><br>
+</div>
+<hr>
+<b>Dear Customer,<br>
+We thank you for choosing us for your service needs.  We are delighted to offer full assistance for your travel requirements. We wish you a happy journey.</b><hr><hr>    
+</div>      
+</div>
+
+<div id =
+"photos12">
+<b>Ref No:</b><br>
+<b>Booked Date:</b><br>
+<b>Ticket Issued By:</b>
+</div> 
+  
+<hr><hr>
+<table id="tktprin">
+<tr>
+<th>Sl No</th>  
+<th>Customer Name</th>     
+<th>Nationality</th> 
+<th>Gender</th> <th>Age</th> 
+<th>Flight No</th>   
+<th>From</th>   
+<th>Departure Date &  Time</th> 
+<th>To</th>   
+<th>Arrival Date & Time</th>   
+<th>Ticket No</th>
+<th>Ticket Status</th> 
+<th>PP No & Validity</th> 
+<th>Seat No</th>
+<th>Class</th>
+<th>Total Traveller's</th>
+<th>Luggage Wt</th>
+<th>Flight Type</th>
+<th>Meals</th>
+<th>Air Fare</th>
+<th>Baby Bassiset Seat</th>
+<th>Remarks</th>
+</tr>         
+</table>
+<hr><hr>
+
+<table id="returnflight">
+<tr>
+<th>Return Flight No</th>
+<th>Return From</th>
+<th>Return Departure Date & Time</th>
+<th>Return To</th>
+<th>Return Arrival Date & Time</th>
+<th>Return Ticket No</th>
+<th>Return Seat No</th>
+<th>Return Class</th>
+<th>Return Luggage Wt</th>
+<th>Return Total Traveller's</th>
+<th>Return Departure Date & Time</th>
+<th>Return Flight Type</th>
+<th>Return Air Fare</th>
+<th>Return Meals</th>
+</tr>
+</table>
+
+
+<div id="barcode">
+</div>
+<br>
+<div class="receipt">
+RECEIPT
+<br>
+<h3>Received the said amount as mentioned in the ticket in cash/CC towards your flight travel ticket.  We wish you a happy journey.</h3>
+<hr>
+<h4>**Please note air fare are subject to change as per rules and regulations from time to time inclusive of airport taxes as applicable to travel under Ministry of Airlines.</h4>
+</div> 
+
+<script> 
+/*Booking Ref Generator*/ 
+function gentoken()
+{
+var x ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var y = x.length;
+var i, txt ="";
+for(i=0; i < 14; i++)
+{
+txt += x[Math.floor(Math.random() * y)]; 
+}
+console.log(txt);
+document.getElementById("gen").disabled="false";
+}
+
+/*Ticket Generator*/
+function tktnmbr()
+{
+var tkt ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var nmbr = tkt.length;
+var wow, ping ="";
+for(wow =0; wow <= 6; wow++)
+{
+ping += tkt[Math.floor(Math.random() * nmbr)]; 
+console.log(ping);
+document.getElementById("tickets").disabled="false";
+ }
+}
+
+function seat1(){
+var soldout,  soldoutfirst, soldouteco,i, soldoutprem, soldoutbusi;
+var myseatnmbr, ticket, bookeddate;
+
+var flightno, amount, taxes = 350;
+
+var totalseats = 20;
+var first = 5;
+var busi = 5; 
+var prem = 5;
+var eco = 5; 
+
+var totalseatfirst = 0;
+var totalseateco = 0;
+var totalseatprem = 0; 
+var totalseatbusi = 0;
+
+var totalmember = document.getElementById("tan").value;
+var destin = document.getElementById("des");
+
+var departdt =  document.getElementById("depar").value;
+
+var currenttkt = currenttktprice.options[currenttktprice.selectedIndex].value;
+
+var tax = document.getElementById("currenttax").value;
+if(tax == 'true'){
+taxes = tax;
+}
+
+var luggages = luggage.options[luggage.selectedIndex].value;
+
+var excessluggage = document.getElementById("amt").value;
+var excesswt = document.getElementById("permitted").value;
+
+var totalexcesswt = (excessluggage * excesswt);
+
+bookeddate = document.getElementById("books").value;
+
+myseatnmbr = document.getElementById('seatfavor').value;
+
+//departure ticket date check status
+var tktdate = document.getElementById("booked").value;
+
+var mydate = new Date(document.getElementById('depar').value);
+
+
+var q = new Date(); 
+var usdate = new Date(q.getFullYear(),q.getMonth(),q.getDate()); 
+
+
+
+//departure ticket date//
+var ourdat = mydate.toLocaleDateString();
+
+var xdat = usdate.toLocaleDateString();
+
+//storing dates for comparison
+var arr = [];
+arr = "Booking date:" + "**"+ bookeddate + "&&" + "Your requested ticket date:" + "**"+ tktdate;
+
+
+flightno = flight.options[flight.selectedIndex].text;
+
+ticket = tktprice.options[tktprice.selectedIndex].value;
+console.log("class selected:" + ticket + 'flight:'+ flightno);
+
+for(var q =0; q <= totalseats; q++){
+document.getElementById("seat").disabled = "true";
+if(flightno == "Q406" || "Q410" || "Q415"){
+console.log("flight is:", flightno);
+} else{
+console.log("flight not chosen");
+}
+
+if(totalmember >4){
+//to check seat number to get disabled if more than 4 tickets chosen
+
+document.getElementById("seat").disabled = "false";
+alert("Sorry.... only 4 tickets can be purchased per booking");
+ }
+   
+if(ticket == 1800){
+soldoutfirst = first - totalmember;
+console.log("Bal tkts in 1st class available:", soldoutfirst);
+}else if(ticket == 1400){
+soldoutprem =
+prem - totalmember;
+console.log("Bal premium class seats available:", soldoutprem);
+} else if(ticket == 1200){
+soldouteco = eco - totalmember;
+console.log("bal eco seats available:", soldouteco);
+ } else if(ticket == 1600){
+soldoutbusi = busi - totalmember;
+console.log("bal business seats available:", soldoutbusi);
+ }
+
+
+if(ticket == 1800){
+if(flightno == "Q406" || "Q410" || "Q415"){
+totalseatfirst = parseInt(totalseatfirst + totalmember);
+}
+totalseatfirst.reduce(function myfirst(index, value, total, array){
+return total + value;
+console.log("total 1st class seats:", totalseatfirst);
+});
+
+if(totalseatfirst == 5){
+console.log("All Seats booked in Ist class...sorry.. check out other class");
+}
+ } else if(ticket == 1200){
+if(flightno == "Q406" || "Q410" || "Q415"){
+totalseateco = parseInt(totalseateco + totalmember);
+}
+totalseateco.reduce(function myeco(index, value, total, array){
+return total + value;
+console.log("total economy class seats:", totalseateco);
+});
+
+if(totalseateco == 5){
+console.log("All Seats booked in economy class...sorry.. check out other class");
+ }
+}else if(ticket == 1400){
+if(flightno == "Q406" || "Q410" || "Q415"){
+totalseatprem = parseInt(totalseatprem + totalmember);
+}
+totalseatprem.reduce(function myprem(index, value, total, array){
+return total + value;
+console.log("total 1st class seats:", totalseatprem);
+});
+
+if(totalseatprem == 5){
+console.log("All Seats booked in premium class...sorry.. check out other class");
+ }
+} else{
+totalseatbusi = parseInt(totalseatbusi + totalmember);
+}
+totalseatbusi.reduce(function mybusiness(index, value, total, array){
+return total + value;
+console.log("total 1st class seats:", totalseatbusi);
+});
+
+if(totalseatbusi == 5){
+console.log("All Seats booked in Ist class...sorry.. check out other class");
+
+var dat = tktdate.toLocaleDateString([], options);
+var dat1 = tktdate.toLocaleDateString([], "en-US");
+var dat2 = tktdate.toDateString();
+reservation = dat + dat1 + dat2;
+
+if(flightno == "Q406" || "Q410" || "Q415" && ticket == 1800 || 1600 || 1400 || 1200 && reservation == dat || dat1 || dat2){
+alert("Balance seats available in each class on requested ticket date:", totalseatfirst + "¢¢¢" + totalseateco + "&&&&" + totalseatprem + "@@@" + totalseatbusi); 
+}
+dat = dat1 = dat2 = "";
+  }
+ }
+}
+</script>
+
+<script>
+var i, reservation, cost,  xxp, yy, zz;
+alert("Maximum 4 purchase tickets only");
+
+function tktflight(){
+var cost = "";
+xxp = document.getElementsByName("reservation[]");
+reservation = document.forms[0];
+
+var immigration = 
+dan.options[dan.selectedIndex].value;
+
+var occupation = 
+custoccup.options[custoccup.selectedIndex].value;
+
+var gender = document.getElementById("gend").value;
+if(gender=='checked'){
+var genders = gender;
+}
+
+var healthstatus = 
+van.options[van.selectedIndex].value;
+
+var babiesseat = babies.options[babies.selectedIndex].value;
+
+var checkin = document.getElementById("chkin").value;
+
+var custhealth = document.getElementById("ban").value;
+
+var reason1 = Reason.options[Reason.selectedIndex].value;
+
+var family1 = family.options[family.selectedIndex].value;
+
+var flight1 = flight.options[flight.selectedIndex].value;
+
+var tktprice1 = tktprice.options[tktprice.selectedIndex].value;
+
+var babyseater = babyseat.options[babyseat.selectedIndex].value;
+
+var currenttktprice1 = currenttktprice.options[currenttktprice.selectedIndex].value;
+
+var direction1 = direction.options[direction.selectedIndex].value;
+
+var tktstatus = ticket_status.options[ticket_status.selectedIndex].value;
+
+var foods = food.options[food.selectedIndex].value;
+
+var gates = gate.options[gate.selectedIndex].value;
+
+var tktissue = issuer.options[issuer.selectedIndex].value;
+
+var credits = credit.options[credit.selectedIndex].value;
+
+var currencies = currency.options[currency.selectedIndex].value;
+
+var currencies1 = document.getElementById("currency1").value;
+
+if(currencies1 == true){
+currencies = currencies1;
+}
+
+for(i=0; i<xxp.length; i++){
+yy = xxp[i];
+cost = cost + "reservation[" + i + "].value" + yy.value + "<br/>"; console.log(xxp[i].value);
+  }
+ }
+</script>
+
+<script>
+function forward()
+{
+window.history.forward();
+
+setCookie();
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+getCookie();
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+  var c = ca[i];
+while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0)
+ return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+checkCookie();
+function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+        }
+    }
+}
+}
+
+function backward()
+{
+window.history.back();
+}
+</script>
+
+
+<a href="tel: +1234567890"><b>Call via Skype</b></a>
+
+<a href="https://github.com/cool31/cool31/main/financial/wa.link/ragsdj"><b>Click to chat</b></a>
+<a href="https://github.com/cool31/cool31/main/online/financial/ scanner.html">
+<b>Click to Check Prices</b></a>
+</body>
+</html>
