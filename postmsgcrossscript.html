@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cross script sending msg/data</title>
+</head>
+
+<body>
+<script>
+    /*postMessage(message,targetOrigin, transfer) or use IMAP() - SMTP/POpP/NNTP to send data/messages or use Web Socket*/
+     
+var childwindow = window.open("https://www.bambora.com", "_blank");
+
+
+window.addEventListener('message', function(evt){
+if(event.origin.indexOf("https://www.bambora.com/.../endpoint1") &&
+(event.origin.indexOf("https://www.bambora.com/.../endpoint2"){
+ console.log(evt.data);
+} window.parent.postMessage("send transaction ID with pay status");
+  });
+});
+
+/*to filter data & check on encodeURI() & decodeURI()*/
+
+var_dump(filter_var("https://www.bambora.com/..../endpoint1", "https://www.bambora.com/..../endpoint2", FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED));
+var_dump(filter_var("https://www.bambora.com/..../endpoint1", "https://www.bambora.com/..../endpoint2", FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED));
+var_dump(filter_var("https://www.bambora.com/..../endpoint1", "https://www.bambora.com/..../endpoint2", FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED));
+var_dump(filter_var("https://www.bambora.com/..../endpoint1", "https://www.bambora.com/..../endpoint2", FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED));
+<form>
+<textarea id="text">
+Testing in sending cross script messages/data 
+</textarea>
+<button id="btn">send message</button>
+ </form> 
+
+var text = document.getElementById("text");
+var but = document.getElementById("btn");
+
+but.addEventListener("click", function (){
+sendMessage(text.value);
+text.value = " ";
+}  
+    
+function sendMessage(message){
+if(!message ||! message.length){
+return;
+childwindow.postMessage({
+ message: message,
+ time: new Date();
+ }), "https://www.bambora.com";
+  }
+}
+ window.addEventListener("message", receivedMessage);
+ 
+ function receivedMessage(ev){
+ if(!ev.origin == "https:github.com/cool31/cool31/main/financial/output.php" || event.source !== window.opener){
+ return;
+ 
+ var data;
+ try{
+   data = JSON.parse(ev.data);
+data.message = cleanseText(data.message);
+}
+Catch(ex){
+return;
+}
+
+var p = document.createElement("p");
+p.innerText = (new Date(data.time)).toLocaleTimeString() + "|" + data.message;
+ document.getElementById("console").appendChild(p);
+}
+    
+</script>  
+</body>
+</html>
