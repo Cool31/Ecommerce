@@ -17,7 +17,7 @@ echo filter_input(INPUT_GET, "input", FILTER_SANITIZE_SPECIAL_CHARS);
 echo urlencode($_GET['input']);
 $input = filter_input(INPUT_GET, "input", FILTER_SANITIZE_URL);
 
-echo '<a href = "https://.../?input=" .$input.>XSS_Secured_input/output Data</a>';
+echo '<a href = "https://.../?input=" .$input.XSS_Secured_input/output Data</a>';
 
 session_start();
 function csrftokengenerator(){
@@ -38,4 +38,3 @@ if($_GET['csrf_token'] == ($_SESSION['csrf_token']){
  else{
  die('token validation failed');    
  }
- 
