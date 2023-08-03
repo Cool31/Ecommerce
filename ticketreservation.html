@@ -5,24 +5,11 @@
 <title>Flight Reservation
  System</title>
 <meta name="viewport" content="width=device-width initial-scale =1">
-<script src="/..../datas.js"></script> 
-<script src="/..../reminder.js"></script> 
-<script src="/..../customer.js"></script> 
-<script src="./js/cookies12.js"></script>
-<script src="/..../creditdb.js"></script> 
-<script src="/....></script>/creditvalidity.php"></script> 
-<script src="/..../refunds.js"></script> 
-<script src="/..../flightprint.php"></script> 
-<script src="/..../customerdatavalidity.php"></script> 
-<script src="/..../authorize.php"></script> 
-<script src="/..../customervalidation.php"></script> 
+<script src="/.../allfilelisted.php"></script>
+<script src="/.../alllistedjsfiles.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="https://kit.fontawesome.com/a86d3779f6.js" crossorigin="anonmyous"></script>
-<script src ="./customervalidity.php"></script>
-<script src ="./threecurrencyconvert.js"></script>
-<script src ="./cookph.php"></script>
-<script src ="./latestticketfare.js"></script>
 </script src="
 https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -221,14 +208,14 @@ alert("failed to load" + xhr.status +':'+ xhr.statusTxt);
   }
  }
 }),
-$.post("https://web.na.bambora.com/scripts/payment/payment.asp", "./customers",
+$.post("https://web.na.bambora.com/scripts/payment/payment.asp", "https://github.com/Cool31/Ecommerce/blob/3ad3270cffc49179e0db01bcfb69d3fdad0012d4/customer.js",
   [
   cc: airdtls,
   airfare: totalairfare
   ], function(data, status){
  alert("Data:"+ data+ "\nStatus: "+ status);
   }),
-$.get("https://api.V1.checkout.bambora.com/sessions", "./customers", function(data, status){
+$.get("https://api.V1.checkout.bambora.com/sessions", "./customer.js", function(data, status){
 alert("Returned Data:"+ data+ "\nStatus: "+ status);
   })
 })
@@ -332,7 +319,8 @@ Other Arrival Flights</option>
 </table>
 </div>
 <br><br>
-<form class="air" action="https://..../customervalidation.php "
+<form class="air" action="
+https://github.com/Cool31/Ecommerce/blob/7715ba95446d61bc0a91926f391023813416877c/customervalidation.php"
 method="post" accept-charset ="UTF-8" enctype="multipart/form-data">
 <fieldset>
 <table id= "myta">
@@ -502,7 +490,7 @@ Please Select</option>
 <option value= "KWD">kuwati Dinar</option>
 <option value= "OMR">Rial Omani</option></select>
 <br>
-<button id="pay1" onclick ="./currencyconverter.html">Currency Converter</button> 
+<button id="pay1" onclick ="https://github.com/Cool31/Ecommerce/blob/ecad6fb773c4f6cd77954d4e00d78bd31568692a/threecurrencyconvert.html">Currency Converter</button> 
 </td>
 <hr>
 <td><b><i>Ticket Number:</i></b>
@@ -510,8 +498,8 @@ Please Select</option>
 "tick()">TICKET NUMBER</button>
 </td>
 <tr><td>
-<button onclick="seat1()" id="ticketdisp" name="tickview">VIEW TICKET</button>
-</td></tr>
+<button onclick="seat1()" id="ticketdisp" name="tickview" value='https://github.com/Cool31/Ecommerce/blob/8fa8419112514b8743cdd0b6ca7b073d0246cc54/flightprint.php'>VIEW TICKET</button>
+<button onClick="/.../flightdailychart.php">DAILY FLIGHT CHARTS</button><button onClick="https://github.com/Cool31/Ecommerce/blob/0f5f4d0c52135aab6a9f58260278762b20606dd0/fullflight.js">TAKEOFF FLIGHT CHART</button></td></tr>
 <tr><td>
 <button id="generator" name="ticktok" onclick=
 "tickettoken()">SINGLE ONE-TIME USE TOKEN GENERATOR</button></td></tr>
@@ -558,7 +546,7 @@ Choose Card Issuer: <br>(Speedy Transaction)<select id ="cardsoftype"  name = "p
 </select>
 <button id="pay1" name="paytick" onclick ="airport()">PAY CREDIT/DEBIT - TICKET</button>
 <hr>
-Transaction ID No:<input type="number" id="refunds" name="transid" value=""/><button id="pay3></button>" onclick = "./refunds.js">REFUND</button>
+Transaction ID No:<input type="number" id="refunds" name="transid" value=""/><button id="pay3></button>" onclick = "https://sureshs2022.w3spaces.com/Airlines_Reservation_System/refunds.js">REFUND</button>
 <hr>
 <hr>
 (To use this button only on wrong card entry details):
@@ -566,13 +554,15 @@ Transaction ID No:<input type="number" id="refunds" name="transid" value=""/><bu
 </fieldset>
  </form> 
 <br>
-<form id="latest" name="lattick" action="/../rsaoeapkey.html">
+<form id="latest" name="lattick" action=
+"https://github.com/Cool31/Ecommerce/blob/dae12747b94b7f9174a0fae575d1df75de62015a/rsaoeapkey.html">
 <fieldset>  
 <legend>Official Authentication Use Only</legend> 
 <td><b><i>
 Username:<input type="text" name="user" onfocus="background-color:red;"><br> Encryption:<keygenname="security">
 <br>
-<button onClick="./rememberme.php">Remember Me</button>
+<button onClick="
+https://github.com/Cool31/Ecommerce/blob/31b6980ff904d14fafe29a76e3f6ff3d3be5b690/rememberme.php">Remember Me</button>
 <input type="submit">
 </i></b></td><br>       
 Ticket Price (use only if prices changed):</i></b><br>Enter Latest First Class Ticket Price:<input type="number" id = "price"   disabled>
@@ -598,7 +588,8 @@ Please Select</option>
 <option value= "AED">UAE Dirham</option>
 <option value= "KWD">kuwati Dinar</option>
 <option value= "OMR">Rial Omani</option>
-<button id="pay1" onclick ="./currencyconverter.html">Currency Converter</button>
+<button id="pay1" onclick =
+"https://github.com/Cool31/Ecommerce/blob/ecad6fb773c4f6cd77954d4e00d78bd31568692a/threecurrencyconvert.html">Currency Converter</button>
 </select><br>
 <td><b><i>Latest Airport Tax Price (use only if taxes changed):</i></b><br>
 Airport Tax:<input type="number" id= "currenttax" name="airtax" disabled><br>
@@ -1147,7 +1138,8 @@ payment();
 
 const payment= async()=>{
 try{
-const response= await fetch("customervalidity.php",{
+const response= await fetch("/.../
+customervalidation.php",{
 method: 'POST',
 body: new FormData(formid),
 });
@@ -1201,7 +1193,8 @@ pays();
 
 const pays= async()=>{
 try{
-const responses= await fetch("creditvalidity.php", './customer.js', './creditdb.js'{
+const responses= await fetch("https://github.com/Cool31/Ecommerce/blob/74eb4c959e6c7c611e1b3707672e536ab51fc875/creditvalidity.php", 'https://sureshs2022.w3spaces.com/Airlines_Reservation_System/customer.js', '
+https://sureshs2022.w3spaces.com/Airlines_Reservation_System/creditdb.js'{
 method: 'POST',
 body: new FormData(aircredit),
 });
