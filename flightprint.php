@@ -1,4 +1,3 @@
-//install PDFlib library
 <?php
 $pdf= new pdf();
 pdf_begin_document($pdf);
