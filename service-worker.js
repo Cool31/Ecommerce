@@ -1,0 +1,1 @@
+self.addEventListener('install', (event) => { // run caching when installing service worker. }); self.addEventListener('activate', (event) => {   // After install and all active pages have been closed, this will run. });
