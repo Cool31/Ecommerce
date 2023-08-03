@@ -2,7 +2,7 @@
 /*files uploaded + total files status*/
 
 if($_FILES(["order"]["error"]) == UPLOAD_ERR_OK){
-$filelocation = "d://....";
+$filelocation = "https://github.com/Cool31/Ecommerce";
 if(!fileexists($_FILES(["order"]){
  mkdir($filelocation);
 move_uploaded_file($_FILES["order"]["tmpname"], $filelocation, basename($_FILES["order"]["name"]));
@@ -13,7 +13,7 @@ move_uploaded_file($_FILES["order"]["tmpname"], $filelocation, basename($_FILES[
 $totalfiles = isset($_FILES(["order"]["error"])== UPLOAD_ERR_OK){
  for($i = 0; $i <$totalfiles; $i++){
  if($_FILES(["order"]["error"]) == UPLOAD_ERR_OK){
-$filelocation = "d://....";
+$filelocation = "https://github.com/Cool31/Ecommerce";
 if(!fileexists($_FILES(["order"][$i]){
  mkdir($filelocation);
 move_uploaded_file($_FILES["order"]["tmpname"], $filelocation, basename($_FILES["order"]["name"]));
@@ -60,4 +60,3 @@ echo "</tr";
 } 
 ?>   
 </table>
-*/
