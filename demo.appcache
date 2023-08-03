@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# A comment, version
+CACHE:
+/allfilelisted.php
+/alllistedjsfiles.js
+FALLBACK
+/.../offline.html
+NETWORK
+*
