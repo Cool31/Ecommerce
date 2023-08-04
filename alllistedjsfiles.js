@@ -47,3 +47,10 @@
 <script src=
 'https://github.com/Cool31/Ecommerce/blob/2a0071179e57146948e81547be6846378c85d44b/virusscan.js'>
 </script>
+
+<script src=
+'https://github.com/Cool31/Ecommerce/blob/551bce724ce5b9963ea41bf56efd27664712189b/flightdailychart.js'></script>
+
+
+<script src=
+'https://github.com/Cool31/Ecommerce/blob/997c45f88a5448f33e545c4cbb6b269950bbf2c3/flightchart.js'></script>
