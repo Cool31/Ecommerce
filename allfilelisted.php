@@ -22,7 +22,7 @@
 <?php include
 'https://github.com/Cool31/Ecommerce/blob/4c19aebd84d68279eaad82afa986c311904b6062/ipaddressvalid.php'; ?>
 <?php include
-https://github.com'/Cool31/Ecommerce/blob/16717b6fd972d592eebdd93e7b10ad3a928b17f5/outputdata.php'; ?>
+'https://github.com/Cool31/Ecommerce/blob/16717b6fd972d592eebdd93e7b10ad3a928b17f5/outputdata.php'; ?>
 <?php include
 'https://github.com/Cool31/Ecommerce/blob/2c477ac383cd6b830d991e967a914142bd3d2522/phonevalidation.php'; ?>
 <?php include
@@ -45,4 +45,6 @@ https://github.com'/Cool31/Ecommerce/blob/a98d23b1d587f4bc741dcb04fbb4c3b6bce5f2
 'https://github.com/Cool31/Ecommerce/blob/32ae17284d96c9d5824094c65cf43e609771381d/bamboramerchant.php'; ?>
 <?php include
 'https://github.com/Cool31/Ecommerce/blob/74eb4c959e6c7c611e1b3707672e536ab51fc875/creditvalidity.php'; ?>
-# chk customervalidity.php
+
+
+
